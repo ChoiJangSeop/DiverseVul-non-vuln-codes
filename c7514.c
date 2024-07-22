@@ -140,7 +140,7 @@ static int tun_set_iff(struct net *net, struct file *file, struct ifreq *ifr)
 	if (netif_running(tun->dev))
 		netif_tx_wake_all_queues(tun->dev);
 
-	strcpy(ifr->ifr_name, tun->dev->name);
+	strcpy_s(ifr->ifr_name, sizeof(ifr->ifr_name), tun->dev->name);
 	return 0;
 
 err_detach:

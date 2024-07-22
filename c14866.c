@@ -69,52 +69,52 @@ out_no_vpd:
 	if (tg3_asic_rev(tp) == ASIC_REV_5717) {
 		if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_5717 ||
 		    tp->pdev->device == TG3PCI_DEVICE_TIGON3_5717_C)
-			strcpy(tp->board_part_number, "BCM5717");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM5717");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_5718)
-			strcpy(tp->board_part_number, "BCM5718");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM5718");
 		else
 			goto nomatch;
 	} else if (tg3_asic_rev(tp) == ASIC_REV_57780) {
 		if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57780)
-			strcpy(tp->board_part_number, "BCM57780");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57780");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57760)
-			strcpy(tp->board_part_number, "BCM57760");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57760");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57790)
-			strcpy(tp->board_part_number, "BCM57790");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57790");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57788)
-			strcpy(tp->board_part_number, "BCM57788");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57788");
 		else
 			goto nomatch;
 	} else if (tg3_asic_rev(tp) == ASIC_REV_57765) {
 		if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57761)
-			strcpy(tp->board_part_number, "BCM57761");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57761");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57765)
-			strcpy(tp->board_part_number, "BCM57765");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57765");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57781)
-			strcpy(tp->board_part_number, "BCM57781");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57781");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57785)
-			strcpy(tp->board_part_number, "BCM57785");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57785");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57791)
-			strcpy(tp->board_part_number, "BCM57791");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57791");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57795)
-			strcpy(tp->board_part_number, "BCM57795");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57795");
 		else
 			goto nomatch;
 	} else if (tg3_asic_rev(tp) == ASIC_REV_57766) {
 		if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57762)
-			strcpy(tp->board_part_number, "BCM57762");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57762");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57766)
-			strcpy(tp->board_part_number, "BCM57766");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57766");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57782)
-			strcpy(tp->board_part_number, "BCM57782");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57782");
 		else if (tp->pdev->device == TG3PCI_DEVICE_TIGON3_57786)
-			strcpy(tp->board_part_number, "BCM57786");
+			strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM57786");
 		else
 			goto nomatch;
 	} else if (tg3_asic_rev(tp) == ASIC_REV_5906) {
-		strcpy(tp->board_part_number, "BCM95906");
+		strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "BCM95906");
 	} else {
 nomatch:
-		strcpy(tp->board_part_number, "none");
+		strcpy_s(tp->board_part_number, sizeof(tp->board_part_number), "none");
 	}
 }

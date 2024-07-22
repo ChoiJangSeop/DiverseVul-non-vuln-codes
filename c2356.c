@@ -81,7 +81,7 @@ another_hunk (enum diff difftype, bool rev)
 		    goto hunk_done;
 		}
 		if (p_max - p_end < 4) {
-		    strcpy (buf, "  \n");  /* assume blank lines got chopped */
+		    strcpy_s(buf, sizeof(buf), "  \n");  /* assume blank lines got chopped */
 		    chars_read = 3;
 		} else {
 		    fatal ("unexpected end of file in patch");
@@ -232,7 +232,7 @@ another_hunk (enum diff difftype, bool rev)
 		s = buf + 1;
 		chars_read--;
 		if (*s == '\n' && canonicalize) {
-		    strcpy (s, " \n");
+		    strcpy_s(s, sizeof(s), " \n");
 		    chars_read = 2;
 		}
 		if (*s == ' ' || *s == '\t') {
@@ -300,7 +300,7 @@ another_hunk (enum diff difftype, bool rev)
 		s = buf + 1;
 		chars_read--;
 		if (*s == '\n' && canonicalize) {
-		    strcpy (s, "\n");
+		    strcpy_s(s, sizeof(s), "\n");
 		    chars_read = 2;
 		}
 		if (*s == ' ' || *s == '\t') {
@@ -510,7 +510,7 @@ another_hunk (enum diff difftype, bool rev)
 	    chars_read = get_line ();
 	    if (!chars_read) {
 		if (p_max - filldst < 3) {
-		    strcpy (buf, " \n");  /* assume blank lines got chopped */
+		    strcpy_s(buf, sizeof(buf), " \n");  /* assume blank lines got chopped */
 		    chars_read = 2;
 		} else {
 		    fatal ("unexpected end of file in patch");

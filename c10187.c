@@ -209,7 +209,7 @@ gtls_connect_step1(struct Curl_easy *data,
     char *prioritysrp = malloc(len + sizeof(GNUTLS_SRP) + 1);
     if(!prioritysrp)
       return CURLE_OUT_OF_MEMORY;
-    strcpy(prioritysrp, prioritylist);
+    strcpy_s(prioritysrp, sizeof(prioritysrp), prioritylist);
     strcpy(prioritysrp + len, ":" GNUTLS_SRP);
 
     rc = gnutls_priority_set_direct(session, prioritysrp, &err);

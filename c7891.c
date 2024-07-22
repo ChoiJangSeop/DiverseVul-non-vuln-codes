@@ -131,7 +131,7 @@ if (n < 3 || big_buffer[0] != '<' || big_buffer[n-2] != '>')
   goto SPOOL_FORMAT_ERROR;
 
 sender_address = store_get(n-2);
-Ustrncpy(sender_address, big_buffer+1, n-3);
+Ustrcpy_s(sender_address, n-3, big_buffer+1);
 sender_address[n-3] = 0;
 
 if (Ufgets(big_buffer, big_buffer_size, f) == NULL) goto SPOOL_READ_ERROR;

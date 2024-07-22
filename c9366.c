@@ -12,7 +12,7 @@ update_drift_file(double freq_ppm, double skew)
     return;
   }
 
-  strcpy(temp_drift_file,drift_file);
+  strcpy_s(temp_drift_file, sizeof(temp_drift_file), drift_file);
   strcat(temp_drift_file,".tmp");
 
   out = fopen(temp_drift_file, "w");

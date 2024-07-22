@@ -224,18 +224,18 @@ int main(int argc, char** argv)
         //copy_file_ext(source_filename, dest_filename, 0640, dd->dd_uid, dd->dd_gid, O_RDONLY, O_WRONLY | O_CREAT | O_TRUNC | O_EXCL);
 
         strcpy(source_filename + source_base_ofs, "maps");
-        strcpy(dest_base, FILENAME_MAPS);
+        strcpy_s(dest_base, sizeof(dest_base), FILENAME_MAPS);
         copy_file_ext(source_filename, dest_filename, 0640, dd->dd_uid, dd->dd_gid, O_RDONLY, O_WRONLY | O_CREAT | O_TRUNC | O_EXCL);
 
         strcpy(source_filename + source_base_ofs, "limits");
-        strcpy(dest_base, FILENAME_LIMITS);
+        strcpy_s(dest_base, sizeof(dest_base), FILENAME_LIMITS);
         copy_file_ext(source_filename, dest_filename, 0640, dd->dd_uid, dd->dd_gid, O_RDONLY, O_WRONLY | O_CREAT | O_TRUNC | O_EXCL);
 
         strcpy(source_filename + source_base_ofs, "cgroup");
-        strcpy(dest_base, FILENAME_CGROUP);
+        strcpy_s(dest_base, sizeof(dest_base), FILENAME_CGROUP);
         copy_file_ext(source_filename, dest_filename, 0640, dd->dd_uid, dd->dd_gid, O_RDONLY, O_WRONLY | O_CREAT | O_TRUNC | O_EXCL);
 
-        strcpy(dest_base, FILENAME_OPEN_FDS);
+        strcpy_s(dest_base, sizeof(dest_base), FILENAME_OPEN_FDS);
         dump_fd_info(dest_filename, source_filename, source_base_ofs, dd->dd_uid, dd->dd_gid);
 
         free(dest_filename);
@@ -374,7 +374,7 @@ int main(int argc, char** argv)
         path[path_len] = '\0'; /* path now contains only directory name */
         char *newpath = xstrndup(path, path_len - (sizeof(".new")-1));
         if (rename(path, newpath) == 0)
-            strcpy(path, newpath);
+            strcpy_s(path, sizeof(path), newpath);
         free(newpath);
 
         log("Saved core dump of pid %lu (%s) to %s (%llu bytes)", (long)pid, executable, path, (long long)core_size);

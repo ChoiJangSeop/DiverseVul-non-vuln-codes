@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 	int						i;
 
 	/* Get options at the command line (overide default values) */
-    strcpy(Opts, "i:d:h-");
+    strcpy_s(Opts, sizeof(Opts), "i:d:h-");
 
     while ((arg = getopt(argc, argv, Opts)) != EOF) {
         switch (arg) {

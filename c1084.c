@@ -16,7 +16,7 @@ runarg(gs_main_instance * minst, const char *pre, const char *arg,
         lprintf("Out of memory!\n");
         return_error(e_VMerror);
     }
-    strcpy(line, pre);
+    strcpy_s(line, sizeof(line), pre);
     esc_strcat(line, arg);
     strcat(line, post);
     minst->i_ctx_p->starting_arg_file = true;

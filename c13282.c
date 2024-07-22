@@ -106,7 +106,7 @@ CollationCreate(const char *collname, Oid collnamespace,
 	/* form a tuple */
 	memset(nulls, 0, sizeof(nulls));
 
-	namestrcpy(&name_name, collname);
+	namestrcpy_s(&name_name, sizeof(&name_name), collname);
 	oid = GetNewOidWithIndex(rel, CollationOidIndexId,
 							 Anum_pg_collation_oid);
 	values[Anum_pg_collation_oid - 1] = ObjectIdGetDatum(oid);

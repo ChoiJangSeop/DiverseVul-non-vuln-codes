@@ -14,7 +14,7 @@ inbound_cap_ls (server *serv, char *nick, char *extensions_str,
 
 	extensions = g_strsplit (extensions_str, " ", 0);
 
-	strcpy (buffer, "CAP REQ :");
+	strcpy_s(buffer, sizeof(buffer), "CAP REQ :");
 
 	for (i=0; extensions[i]; i++)
 	{

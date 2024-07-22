@@ -11,7 +11,7 @@ char *VDir::MapPathA(const char *pInName)
 	return (char*)pInName;
 
     if (length > MAX_PATH) {
-	strncpy(szlBuf, pInName, MAX_PATH);
+	strcpy_s(szlBuf, MAX_PATH, pInName);
 	if (IsPathSep(pInName[0]) && !IsPathSep(pInName[1])) {   
 	    /* absolute path - reduce length by 2 for drive specifier */
 	    szlBuf[MAX_PATH-2] = '\0';
@@ -48,7 +48,7 @@ char *VDir::MapPathA(const char *pInName)
 	    strcpy(szBuffer, GetDefaultDirA());
 	    if (IsPathSep(pInName[0])) {
 		/* absolute path */
-		strcpy(&szBuffer[2], pInName);
+		strcpy_s(&szBuffer[2], sizeof(&szBuffer[2]), pInName);
 		DoGetFullPathNameA(szBuffer, sizeof(szLocalBufferA), szLocalBufferA);
 	    }
 	    else {

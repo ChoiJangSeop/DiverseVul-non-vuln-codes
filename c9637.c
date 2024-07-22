@@ -20,13 +20,13 @@ im_vips2dz( IMAGE *in, const char *filename )
 	 *
 	 * Just split on the first ':'.
 	 */
-	im_strncpy( name, filename, FILENAME_MAX ); 
+	im_strcpy_s(name, FILENAME_MAX, filename); 
 	if( (p = strchr( name, ':' )) ) {
 		*p = '\0';
 		im_strncpy( mode, p + 1, FILENAME_MAX ); 
 	}
 
-	strcpy( buf, mode ); 
+	strcpy_s(buf, sizeof(buf), mode); 
 	p = &buf[0];
 
 	if( (q = im_getnextoption( &p )) ) {

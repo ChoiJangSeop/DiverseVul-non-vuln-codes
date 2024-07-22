@@ -750,7 +750,7 @@ void CLASS parse_makernote_0xc634(int base, int uptag, unsigned dng_writer)
               imgdata.lens.makernotes.AdapterID = 0x4900;
               imgdata.lens.makernotes.LensID -= imgdata.lens.makernotes.AdapterID;
               imgdata.lens.makernotes.LensMount = LIBRAW_MOUNT_Sigma_X3F;
-              strcpy(imgdata.lens.makernotes.Adapter, "MC-11");
+              strcpy_s(imgdata.lens.makernotes.Adapter, sizeof(imgdata.lens.makernotes.Adapter), "MC-11");
             }
 
             else if ((imgdata.lens.makernotes.LensID > 0xEF00) &&

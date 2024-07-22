@@ -31,7 +31,7 @@ chkpass_in(PG_FUNCTION_ARGS)
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
 				 errmsg("crypt() failed")));
-	strcpy(result->password, crypt_output);
+	strcpy_s(result->password, sizeof(result->password), crypt_output);
 
 	PG_RETURN_POINTER(result);
 }

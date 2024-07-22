@@ -113,7 +113,7 @@ static int do_mount(const char *mnt, char **typep, mode_t rootmode,
 		strcpy(type, blkdev ? "fuseblk" : "fuse");
 
 	if (fsname)
-		strcpy(source, fsname);
+		strcpy_s(source, sizeof(source), fsname);
 	else
 		strcpy(source, subtype ? subtype : dev);
 
@@ -125,7 +125,7 @@ static int do_mount(const char *mnt, char **typep, mode_t rootmode,
 			if (!blkdev)
 				sprintf(source, "%s#%s", subtype, fsname);
 		} else {
-			strcpy(source, type);
+			strcpy_s(source, sizeof(source), type);
 		}
 
 		res = mount_notrunc(source, mnt, type, flags, optbuf);

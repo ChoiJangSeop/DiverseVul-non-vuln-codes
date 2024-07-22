@@ -86,7 +86,7 @@ GF_Err gf_hinter_finalize(GF_ISOFile *file, GF_SDP_IODProfile IOD_Profile, u32 b
 					esd->decoderConfig->maxBitrate = 0;
 					size64 = (u32) strlen(sdpLine)+1;
 					esd->URLString = (char*)gf_malloc(sizeof(char) * size64);
-					strcpy(esd->URLString, sdpLine);
+					strcpy_s(esd->URLString, sizeof(esd->URLString), sdpLine);
 				} else {
 					GF_LOG(GF_LOG_WARNING, GF_LOG_RTP, ("[rtp hinter] OD sample too large to be embedded in IOD - ISMA disabled\n"));
 					is_ok = 0;
@@ -120,7 +120,7 @@ GF_Err gf_hinter_finalize(GF_ISOFile *file, GF_SDP_IODProfile IOD_Profile, u32 b
 				esd->decoderConfig->bufferSizeDB = samp->dataLength;
 				esd->decoderConfig->maxBitrate = 0;
 				esd->URLString = (char*)gf_malloc(sizeof(char) * (strlen(sdpLine)+1));
-				strcpy(esd->URLString, sdpLine);
+				strcpy_s(esd->URLString, sizeof(esd->URLString), sdpLine);
 			} else {
 				GF_LOG(GF_LOG_ERROR, GF_LOG_RTP, ("[rtp hinter] Scene description sample too large to be embedded in IOD - ISMA disabled\n"));
 				is_ok = 0;

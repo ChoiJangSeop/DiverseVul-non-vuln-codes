@@ -66,7 +66,7 @@
         if ( status.encoding != FT_ENCODING_NONE )
           gindex = FTDemo_Get_Index( handle, status.Num );
 
-        strcpy( p, format );
+        strcpy_s(p, sizeof(p), format);
         if ( FT_Get_Glyph_Name( face, gindex,
                                 p + format_len, size - format_len ) )
           *p = '\0';

@@ -14,7 +14,7 @@ static int extractRDNSequence(struct ndpi_packet_struct *packet,
   str = (char*)&packet->payload[offset+5];
 
   len = (u_int)ndpi_min(str_len, buffer_len-1);
-  strncpy(buffer, str, len);
+  strcpy_s(buffer, len, str);
   buffer[len] = '\0';
 
   // check string is printable

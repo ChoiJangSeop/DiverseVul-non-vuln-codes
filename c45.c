@@ -19,7 +19,7 @@ isdn_net_find_icall(int di, int ch, int idx, setup_parm *setup)
 		nr[1] = '\0';
 		printk(KERN_INFO "isdn_net: Incoming call without OAD, assuming '0'\n");
 	} else
-		strcpy(nr, setup->phone);
+		strcpy_s(nr, sizeof(nr), setup->phone);
 	si1 = (int) setup->si1;
 	si2 = (int) setup->si2;
 	if (!setup->eazmsn[0]) {
@@ -290,7 +290,7 @@ isdn_net_find_icall(int di, int ch, int idx, setup_parm *setup)
 					spin_lock_irqsave(&dev->lock, flags);
 					dev->usage[idx] &= ISDN_USAGE_EXCLUSIVE;
 					dev->usage[idx] |= ISDN_USAGE_NET;
-					strcpy(dev->num[idx], nr);
+					strcpy_s(dev->num[idx], sizeof(dev->num[idx]), nr);
 					isdn_info_update();
 					dev->st_netdev[idx] = lp->netdev;
 					lp->isdn_device = di;

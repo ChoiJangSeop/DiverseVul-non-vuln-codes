@@ -88,7 +88,7 @@ int	tfm_load_file(const char *filename, TFMInfo *info)
 		info->coding[n] = 0;
 		ptr += i;
 	} else
-		strcpy(info->coding, "FontSpecific");
+		strcpy_s(info->coding, sizeof(info->coding), "FontSpecific");
 	/* get the font family */
 	if(lh > 12) {
 		n = msget1(ptr);
@@ -97,7 +97,7 @@ int	tfm_load_file(const char *filename, TFMInfo *info)
 			memcpy(info->family, ptr, i);
 			info->family[i] = 0;
 		} else
-			strcpy(info->family, "unspecified");
+			strcpy_s(info->family, sizeof(info->family), "unspecified");
 		ptr += n;
 	}
 	/* now we don't read from `ptr' anymore */

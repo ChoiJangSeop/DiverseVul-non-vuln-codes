@@ -11,7 +11,7 @@ validate_exec(const char *path)
 	if (strlen(path) >= strlen(".exe") &&
 		pg_strcasecmp(path + strlen(path) - strlen(".exe"), ".exe") != 0)
 	{
-		strcpy(path_exe, path);
+		strcpy_s(path_exe, sizeof(path_exe), path);
 		strcat(path_exe, ".exe");
 		path = path_exe;
 	}

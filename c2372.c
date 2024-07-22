@@ -32,7 +32,7 @@ errcode_t ext2fs_open2(const char *name, const char *io_options,
 	retval = ext2fs_get_mem(strlen(name)+1, &fs->device_name);
 	if (retval)
 		goto cleanup;
-	strcpy(fs->device_name, name);
+	strcpy_s(fs->device_name, sizeof(fs->device_name), name);
 	cp = strchr(fs->device_name, '?');
 	if (!io_options && cp) {
 		*cp++ = 0;

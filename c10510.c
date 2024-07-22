@@ -110,7 +110,7 @@ static void bootp_reply(Slirp *slirp, const struct bootp_t *bp)
 
         if (slirp->bootp_filename) {
             g_assert(strlen(slirp->bootp_filename) < sizeof(rbp->bp_file));
-            strcpy(rbp->bp_file, slirp->bootp_filename);
+            strcpy_s(rbp->bp_file, sizeof(rbp->bp_file), slirp->bootp_filename);
         }
 
         *q++ = RFC2132_SRV_ID;

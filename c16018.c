@@ -6,9 +6,9 @@ int ff_htmlmarkup_to_ass(void *log_ctx, AVBPrint *dst, const char *in)
     int closing_brace_missing = 0;
 
     stack[0].tag[0] = 0;
-    strcpy(stack[0].param[PARAM_SIZE],  "{\\fs}");
-    strcpy(stack[0].param[PARAM_COLOR], "{\\c}");
-    strcpy(stack[0].param[PARAM_FACE],  "{\\fn}");
+    strcpy_s(stack[0].param[PARAM_SIZE], sizeof(stack[0].param[PARAM_SIZE]), "{\\fs}");
+    strcpy_s(stack[0].param[PARAM_COLOR], sizeof(stack[0].param[PARAM_COLOR]), "{\\c}");
+    strcpy_s(stack[0].param[PARAM_FACE], sizeof(stack[0].param[PARAM_FACE]), "{\\fn}");
 
     for (; !end && *in; in++) {
         switch (*in) {

@@ -44,7 +44,7 @@ static int _c2s_sx_sasl_callback(int cb, void *arg, void **res, sx_t s, void *cb
                     my_realm = s->req_to;
             }
 
-            strncpy(buf, my_realm, 256);
+            strcpy_s(buf, 256, my_realm);
             *res = (void *)buf;
 
             log_debug(ZONE, "sx sasl callback: get realm: realm is '%s'", buf);
@@ -129,7 +129,7 @@ static int _c2s_sx_sasl_callback(int cb, void *arg, void **res, sx_t s, void *cb
             /* make node a random string */
             jid_random_part(&jid, jid_NODE);
 
-            strcpy(buf, jid.node);
+            strcpy_s(buf, sizeof(buf), jid.node);
 
             *res = (void *)buf;
 

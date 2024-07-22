@@ -224,7 +224,7 @@ static int extract_or_test_entrylist(__G__ numchunk,
                   LoadFarStringSmall2(LvsCFNamMsg),
                   FnFilter2(cFile_PrintBuf), FnFilter1(G.filename)));
 #  undef    cFile_PrintBuf
-                zfstrcpy(G.filename, G.pInfo->cfilname);
+                zfstrcpy_s(G.filename, sizeof(G.filename), G.pInfo->cfilname);
                 if (error_in_archive < PK_WARN)
                     error_in_archive = PK_WARN;
             }
@@ -513,7 +513,7 @@ reprompt:
                         /* Improve echo of '\n' and/or '\r'
                            (sizeof(G.answerbuf) == 10 (see globals.h), so
                            there is enough space for the provided text...) */
-                        strcpy(G.answerbuf, "{ENTER}");
+                        strcpy_s(G.answerbuf, sizeof(G.answerbuf), "{ENTER}");
                         /* fall through ... */
                     default:
                         /* usually get \n here:  remove it for nice display

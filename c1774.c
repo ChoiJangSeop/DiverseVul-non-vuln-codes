@@ -7,7 +7,7 @@ ConvertTimeZoneAbbrevs(TimeZoneAbbrevTable *tbl,
 	tbl->numabbrevs = n;
 	for (i = 0; i < n; i++)
 	{
-		strncpy(newtbl[i].token, abbrevs[i].abbrev, TOKMAXLEN);
+		strcpy_s(newtbl[i].token, TOKMAXLEN, abbrevs[i].abbrev);
 		newtbl[i].type = abbrevs[i].is_dst ? DTZ : TZ;
 		TOVAL(&newtbl[i], abbrevs[i].offset / MINS_PER_HOUR);
 	}

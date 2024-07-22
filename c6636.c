@@ -58,7 +58,7 @@ parse_group_prop_ntr_selection_method(struct ofpbuf *payload,
     }
     /* 'method_len' is now non-zero. */
 
-    strcpy(gp->selection_method, prop->selection_method);
+    strcpy_s(gp->selection_method, sizeof(gp->selection_method), prop->selection_method);
     gp->selection_method_param = ntohll(prop->selection_method_param);
 
     ofpbuf_pull(payload, sizeof *prop);

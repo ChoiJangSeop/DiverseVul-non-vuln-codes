@@ -209,8 +209,7 @@ static void processCertificateElements(struct ndpi_detection_module_struct *ndpi
 		    if(newstr) {
 		      flow->protos.stun_ssl.ssl.server_names = newstr;
 		      flow->protos.stun_ssl.ssl.server_names[flow->protos.stun_ssl.ssl.server_names_len] = ',';
-		      strncpy(&flow->protos.stun_ssl.ssl.server_names[flow->protos.stun_ssl.ssl.server_names_len+1],
-			      dNSName, dNSName_len+1);
+		      strcpy_s(&flow->protos.stun_ssl.ssl.server_names[flow->protos.stun_ssl.ssl.server_names_len+1], dNSName_len+1, dNSName);
 		      flow->protos.stun_ssl.ssl.server_names[newstr_len] = '\0';
 		      flow->protos.stun_ssl.ssl.server_names_len = newstr_len;
 		    }

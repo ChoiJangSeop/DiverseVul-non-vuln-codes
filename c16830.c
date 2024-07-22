@@ -24,7 +24,7 @@ lou_getTable (const char *tableList)
 	    break;
 	if (k == listLength || k == 0)
 	  {			/* Only one file */
-	    strcpy (trialPath, pathList);
+	    strcpy_s(trialPath, sizeof(trialPath), pathList);
 	    strcat (trialPath, pathEnd);
 	    strcat (trialPath, tableList);
 	    table = getTable (trialPath);
@@ -33,7 +33,7 @@ lou_getTable (const char *tableList)
 	  }
 	else
 	  {			/* Compile a list of files */
-	    strncpy (trialPath, pathList, k);
+	    strcpy_s(trialPath, k, pathList);
 	    trialPath[k] = 0;
 	    strcat (trialPath, pathEnd);
 	    strcat (trialPath, tableList);
@@ -75,7 +75,7 @@ lou_getTable (const char *tableList)
       pathList = lou_getDataPath ();
       if (pathList)
 	{
-	  strcpy (trialPath, pathList);
+	  strcpy_s(trialPath, sizeof(trialPath), pathList);
 	  strcat (trialPath, pathEnd);
 #ifdef _WIN32
 	  strcat (trialPath, "liblouis\\tables\\");
@@ -95,7 +95,7 @@ lou_getTable (const char *tableList)
       strcpy (trialPath, lou_getProgramPath ());
       strcat (trialPath, "\\share\\liblouss\\tables\\");
 #else
-      strcpy (trialPath, TABLESDIR);
+      strcpy_s(trialPath, sizeof(trialPath), TABLESDIR);
       strcat (trialPath, pathEnd);
 #endif
       strcat (trialPath, tableList);

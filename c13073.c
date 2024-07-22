@@ -9,12 +9,12 @@ build_unc_path_to_root(const struct smb_vol *vol,
 	if (full_path == NULL)
 		return ERR_PTR(-ENOMEM);
 
-	strncpy(full_path, vol->UNC, unc_len);
+	strcpy_s(full_path, unc_len, vol->UNC);
 	pos = full_path + unc_len;
 
 	if (pplen) {
 		*pos++ = CIFS_DIR_SEP(cifs_sb);
-		strncpy(pos, vol->prepath, pplen);
+		strcpy_s(pos, pplen, vol->prepath);
 		pos += pplen;
 	}
 

@@ -23,17 +23,17 @@ escape_xml(const char *text)
 		}
 		switch (*text) {
 			case '&':
-				strcpy(out, "&amp;");
+				strcpy_s(out, sizeof(out), "&amp;");
 				len += strlen(out) - 1;
 				out = escaped + len;
 				break;
 			case '<':
-				strcpy(out, "&lt;");
+				strcpy_s(out, sizeof(out), "&lt;");
 				len += strlen(out) - 1;
 				out = escaped + len;
 				break;
 			case '>':
-				strcpy(out, "&gt;");
+				strcpy_s(out, sizeof(out), "&gt;");
 				len += strlen(out) - 1;
 				out = escaped + len;
 				break;

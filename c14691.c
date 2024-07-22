@@ -14,7 +14,7 @@ krb5_decode(void *app_data, void *buf, int len,
   maj = gss_unwrap(&min, *context, &enc, &dec, NULL, NULL);
   if(maj != GSS_S_COMPLETE) {
     if(len >= 4)
-      strcpy(buf, "599 ");
+      strcpy_s(buf, sizeof(buf), "599 ");
     return -1;
   }
 

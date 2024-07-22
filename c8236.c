@@ -43,7 +43,7 @@ psutil_net_io_counters(PyObject *self, PyObject *args) {
             struct sockaddr_dl *sdl = (struct sockaddr_dl *)(if2m + 1);
             char ifc_name[32];
 
-            strncpy(ifc_name, sdl->sdl_data, sdl->sdl_nlen);
+            strcpy_s(ifc_name, sdl->sdl_nlen, sdl->sdl_data);
             ifc_name[sdl->sdl_nlen] = 0;
 
             py_ifc_info = Py_BuildValue(

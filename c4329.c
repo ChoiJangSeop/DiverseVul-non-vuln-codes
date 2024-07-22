@@ -15,7 +15,7 @@ gsicc_open_search(const char* pname, int namelen, gs_memory_t *mem_gc,
                                      "gsicc_open_search");
         if (buffer == NULL)
             return_error(gs_error_VMerror);
-        strcpy(buffer, dirname);
+        strcpy_s(buffer, sizeof(buffer), dirname);
         strcat(buffer, pname);
         /* Just to make sure we were null terminated */
         buffer[namelen + dirlen] = '\0';
@@ -40,7 +40,7 @@ gsicc_open_search(const char* pname, int namelen, gs_memory_t *mem_gc,
                         strlen(DEFAULT_DIR_ICC),"gsicc_open_search");
     if (buffer == NULL)
         return_error(gs_error_VMerror);
-    strcpy(buffer, DEFAULT_DIR_ICC);
+    strcpy_s(buffer, sizeof(buffer), DEFAULT_DIR_ICC);
     strcat(buffer, pname);
     /* Just to make sure we were null terminated */
     buffer[namelen + strlen(DEFAULT_DIR_ICC)] = '\0';

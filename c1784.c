@@ -55,11 +55,11 @@ resolve_symlinks(char *path)
 			return -1;
 		}
 		link_buf[rllen] = '\0';
-		strcpy(path, link_buf);
+		strcpy_s(path, sizeof(path), link_buf);
 	}
 
 	/* must copy final component out of 'path' temporarily */
-	strcpy(link_buf, fname);
+	strcpy_s(link_buf, sizeof(link_buf), fname);
 
 	if (!getcwd(path, MAXPGPATH))
 	{

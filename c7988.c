@@ -70,7 +70,7 @@ negotiate_handshake_newstyle_options (struct connection *conn)
         nbdkit_error ("malloc: %m");
         return -1;
       }
-      strcpy (conn->exportname, data);
+      strcpy_s(conn->exportname, sizeof(conn->exportname), data);
 
       /* We have to finish the handshake by sending handshake_finish. */
       if (finish_newstyle_options (conn, &exportsize) == -1)

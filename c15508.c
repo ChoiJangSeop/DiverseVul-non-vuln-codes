@@ -48,7 +48,7 @@ static char *print_array( cJSON *item, int depth, int fmt )
 	ptr = out + 1;
 	*ptr = 0;
 	for ( i = 0; i < numentries; ++i ) {
-		strcpy( ptr, entries[i] );
+		strcpy_s(ptr, sizeof(ptr), entries[i]);
 		ptr += strlen( entries[i] );
 		if ( i != numentries - 1 ) {
 			*ptr++ = ',';

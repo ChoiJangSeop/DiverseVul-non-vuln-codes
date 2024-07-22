@@ -43,7 +43,7 @@ static int list_devices(struct file *filp, struct dm_ioctl *param, size_t param_
 			disk = dm_disk(hc->md);
 			nl->dev = huge_encode_dev(disk_devt(disk));
 			nl->next = 0;
-			strcpy(nl->name, hc->name);
+			strcpy_s(nl->name, sizeof(nl->name), hc->name);
 
 			old_nl = nl;
 			event_nr = align_ptr(nl->name + strlen(hc->name) + 1);

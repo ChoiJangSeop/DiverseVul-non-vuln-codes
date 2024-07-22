@@ -8,7 +8,7 @@ g_fork(void)
   rv = fork();
   if (rv == 0) /* child */
   {
-    g_strncpy(g_temp_base, g_temp_base_org, 127);
+    g_strcpy_s(g_temp_base, 127, g_temp_base_org);
     if (mkdtemp(g_temp_base) == 0)
     {
       printf("g_fork: mkdtemp failed [%s]\n", g_temp_base);

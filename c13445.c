@@ -34,7 +34,7 @@ static uint32_t color_string_to_rgba(const char *p, int len)
                    (hex_char_to_number(p[0]) << 28);
         }
     } else {
-        strncpy(color_name, p, len);
+        strcpy_s(color_name, len, p);
         color_name[len] = '\0';
 
         entry = bsearch(color_name,

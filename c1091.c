@@ -90,7 +90,7 @@ int main(void)
 			p = (char *)hv_msg->body.kvp_register.version;
 			lic_version = malloc(strlen(p) + 1);
 			if (lic_version) {
-				strcpy(lic_version, p);
+				strcpy_s(lic_version, sizeof(lic_version), p);
 				syslog(LOG_INFO, "KVP LIC Version: %s",
 					lic_version);
 			} else {
@@ -111,7 +111,7 @@ int main(void)
 					hv_msg->body.kvp_set.data.key_size,
 					hv_msg->body.kvp_set.data.value,
 					hv_msg->body.kvp_set.data.value_size))
-				strcpy(hv_msg->body.kvp_set.data.key, "");
+				strcpy_s(hv_msg->body.kvp_set.data.key, sizeof(hv_msg->body.kvp_set.data.key), "");
 			break;
 
 		case KVP_OP_GET:
@@ -120,14 +120,14 @@ int main(void)
 					hv_msg->body.kvp_set.data.key_size,
 					hv_msg->body.kvp_set.data.value,
 					hv_msg->body.kvp_set.data.value_size))
-				strcpy(hv_msg->body.kvp_set.data.key, "");
+				strcpy_s(hv_msg->body.kvp_set.data.key, sizeof(hv_msg->body.kvp_set.data.key), "");
 			break;
 
 		case KVP_OP_DELETE:
 			if (kvp_key_delete(hv_msg->kvp_hdr.pool,
 					hv_msg->body.kvp_delete.key,
 					hv_msg->body.kvp_delete.key_size))
-				strcpy(hv_msg->body.kvp_delete.key, "");
+				strcpy_s(hv_msg->body.kvp_delete.key, sizeof(hv_msg->body.kvp_delete.key), "");
 			break;
 
 		default:
@@ -160,52 +160,52 @@ int main(void)
 		case FullyQualifiedDomainName:
 			kvp_get_domain_name(key_value,
 					HV_KVP_EXCHANGE_MAX_VALUE_SIZE);
-			strcpy(key_name, "FullyQualifiedDomainName");
+			strcpy_s(key_name, sizeof(key_name), "FullyQualifiedDomainName");
 			break;
 		case IntegrationServicesVersion:
-			strcpy(key_name, "IntegrationServicesVersion");
-			strcpy(key_value, lic_version);
+			strcpy_s(key_name, sizeof(key_name), "IntegrationServicesVersion");
+			strcpy_s(key_value, sizeof(key_value), lic_version);
 			break;
 		case NetworkAddressIPv4:
 			kvp_get_ip_address(AF_INET, key_value,
 					HV_KVP_EXCHANGE_MAX_VALUE_SIZE);
-			strcpy(key_name, "NetworkAddressIPv4");
+			strcpy_s(key_name, sizeof(key_name), "NetworkAddressIPv4");
 			break;
 		case NetworkAddressIPv6:
 			kvp_get_ip_address(AF_INET6, key_value,
 					HV_KVP_EXCHANGE_MAX_VALUE_SIZE);
-			strcpy(key_name, "NetworkAddressIPv6");
+			strcpy_s(key_name, sizeof(key_name), "NetworkAddressIPv6");
 			break;
 		case OSBuildNumber:
-			strcpy(key_value, os_build);
-			strcpy(key_name, "OSBuildNumber");
+			strcpy_s(key_value, sizeof(key_value), os_build);
+			strcpy_s(key_name, sizeof(key_name), "OSBuildNumber");
 			break;
 		case OSName:
-			strcpy(key_value, os_name);
-			strcpy(key_name, "OSName");
+			strcpy_s(key_value, sizeof(key_value), os_name);
+			strcpy_s(key_name, sizeof(key_name), "OSName");
 			break;
 		case OSMajorVersion:
-			strcpy(key_value, os_major);
-			strcpy(key_name, "OSMajorVersion");
+			strcpy_s(key_value, sizeof(key_value), os_major);
+			strcpy_s(key_name, sizeof(key_name), "OSMajorVersion");
 			break;
 		case OSMinorVersion:
-			strcpy(key_value, os_minor);
-			strcpy(key_name, "OSMinorVersion");
+			strcpy_s(key_value, sizeof(key_value), os_minor);
+			strcpy_s(key_name, sizeof(key_name), "OSMinorVersion");
 			break;
 		case OSVersion:
-			strcpy(key_value, os_build);
-			strcpy(key_name, "OSVersion");
+			strcpy_s(key_value, sizeof(key_value), os_build);
+			strcpy_s(key_name, sizeof(key_name), "OSVersion");
 			break;
 		case ProcessorArchitecture:
-			strcpy(key_value, processor_arch);
-			strcpy(key_name, "ProcessorArchitecture");
+			strcpy_s(key_value, sizeof(key_value), processor_arch);
+			strcpy_s(key_name, sizeof(key_name), "ProcessorArchitecture");
 			break;
 		default:
-			strcpy(key_value, "Unknown Key");
+			strcpy_s(key_value, sizeof(key_value), "Unknown Key");
 			/*
 			 * We use a null key name to terminate enumeration.
 			 */
-			strcpy(key_name, "");
+			strcpy_s(key_name, sizeof(key_name), "");
 			break;
 		}
 		/*

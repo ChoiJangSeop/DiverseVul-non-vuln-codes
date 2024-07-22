@@ -157,7 +157,7 @@ send_ldap_result_ext(
             buf = slapi_ch_malloc(len);
             *buf = '\0';
             if (text != NULL) {
-                strcpy(buf, text);
+                strcpy_s(buf, sizeof(buf), text);
                 strcat(buf, "\n");
             }
             strcat(buf, "Referral:");

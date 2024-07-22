@@ -34,7 +34,7 @@ DLLIMPORT char *cfg_tilde_expand(const char *filename)
 			if (!expanded)
 				return NULL;
 
-			strcpy(expanded, passwd->pw_dir);
+			strcpy_s(expanded, sizeof(expanded), passwd->pw_dir);
 			strcat(expanded, file);
 		}
 	}

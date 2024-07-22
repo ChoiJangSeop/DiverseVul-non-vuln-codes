@@ -121,20 +121,20 @@ onscreen_mvcur(NCURSES_SP_DCLx
 			     ynew, xnew, ovw);
 	break;
     case 2:
-	(void) _nc_safe_strcpy(&result, carriage_return);
+	(void) _nc_safe_strcpy_s(&result, sizeof(&result), carriage_return);
 	(void) relative_move(NCURSES_SP_ARGx
 			     &result,
 			     yold, 0,
 			     ynew, xnew, ovw);
 	break;
     case 3:
-	(void) _nc_safe_strcpy(&result, cursor_home);
+	(void) _nc_safe_strcpy_s(&result, sizeof(&result), cursor_home);
 	(void) relative_move(NCURSES_SP_ARGx
 			     &result, 0, 0,
 			     ynew, xnew, ovw);
 	break;
     case 4:
-	(void) _nc_safe_strcpy(&result, cursor_to_ll);
+	(void) _nc_safe_strcpy_s(&result, sizeof(&result), cursor_to_ll);
 	(void) relative_move(NCURSES_SP_ARGx
 			     &result,
 			     screen_lines(SP_PARM) - 1, 0,

@@ -26,7 +26,7 @@ nfs_printfh(netdissect_options *ndo,
 		static char temp[NFSX_V3FHMAX+1];
 
 		/* Make sure string is null-terminated */
-		strncpy(temp, sfsname, NFSX_V3FHMAX);
+		strcpy_s(temp, NFSX_V3FHMAX, sfsname);
 		temp[sizeof(temp) - 1] = '\0';
 		/* Remove trailing spaces */
 		spacep = strchr(temp, ' ');

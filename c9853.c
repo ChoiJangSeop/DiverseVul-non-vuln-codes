@@ -6,12 +6,12 @@ int WavpackSetConfiguration64 (WavpackContext *wpc, WavpackConfig *config, int64
     int i;
 
     if (config->sample_rate <= 0) {
-        strcpy (wpc->error_message, "sample rate cannot be zero or negative!");
+        strcpy_s(wpc->error_message, sizeof(wpc->error_message), "sample rate cannot be zero or negative!");
         return FALSE;
     }
 
     if (!num_chans) {
-        strcpy (wpc->error_message, "channel count cannot be zero!");
+        strcpy_s(wpc->error_message, sizeof(wpc->error_message), "channel count cannot be zero!");
         return FALSE;
     }
 
@@ -35,7 +35,7 @@ int WavpackSetConfiguration64 (WavpackContext *wpc, WavpackConfig *config, int64
 
         // most options that don't apply to DSD we can simply ignore for now, but NOT hybrid mode!
         if (config->flags & CONFIG_HYBRID_FLAG) {
-            strcpy (wpc->error_message, "hybrid mode not available for DSD!");
+            strcpy_s(wpc->error_message, sizeof(wpc->error_message), "hybrid mode not available for DSD!");
             return FALSE;
         }
 
@@ -43,7 +43,7 @@ int WavpackSetConfiguration64 (WavpackContext *wpc, WavpackConfig *config, int64
         config->flags &= (CONFIG_HIGH_FLAG | CONFIG_MD5_CHECKSUM | CONFIG_PAIR_UNDEF_CHANS);
         config->float_norm_exp = config->xmode = 0;
 #else
-        strcpy (wpc->error_message, "libwavpack not configured for DSD!");
+        strcpy_s(wpc->error_message, sizeof(wpc->error_message), "libwavpack not configured for DSD!");
         return FALSE;
 #endif
     }
@@ -74,7 +74,7 @@ int WavpackSetConfiguration64 (WavpackContext *wpc, WavpackConfig *config, int64
     if (!(flags & DSD_FLAG)) {
         if (config->float_norm_exp) {
             if (config->bytes_per_sample != 4 || config->bits_per_sample != 32) {
-                strcpy (wpc->error_message, "incorrect bits/bytes configuration for float data!");
+                strcpy_s(wpc->error_message, sizeof(wpc->error_message), "incorrect bits/bytes configuration for float data!");
                 return FALSE;
             }
 
@@ -84,12 +84,12 @@ int WavpackSetConfiguration64 (WavpackContext *wpc, WavpackConfig *config, int64
         }
         else {
             if (config->bytes_per_sample < 1 || config->bytes_per_sample > 4) {
-                strcpy (wpc->error_message, "invalid bytes per sample!");
+                strcpy_s(wpc->error_message, sizeof(wpc->error_message), "invalid bytes per sample!");
                 return FALSE;
             }
 
             if (config->bits_per_sample < 1 || config->bits_per_sample > config->bytes_per_sample * 8) {
-                strcpy (wpc->error_message, "invalid bits per sample!");
+                strcpy_s(wpc->error_message, sizeof(wpc->error_message), "invalid bits per sample!");
                 return FALSE;
             }
 
@@ -137,7 +137,7 @@ int WavpackSetConfiguration64 (WavpackContext *wpc, WavpackConfig *config, int64
         int lastchan = 0, mask_copy = chan_mask;
 
         if ((int) strlen ((char *) chan_ids) > num_chans) {          // can't be more than num channels!
-            strcpy (wpc->error_message, "chan_ids longer than num channels!");
+            strcpy_s(wpc->error_message, sizeof(wpc->error_message), "chan_ids longer than num channels!");
             return FALSE;
         }
 
@@ -249,7 +249,7 @@ int WavpackSetConfiguration64 (WavpackContext *wpc, WavpackConfig *config, int64
     wpc->current_stream = 0;
 
     if (num_chans) {
-        strcpy (wpc->error_message, "too many channels!");
+        strcpy_s(wpc->error_message, sizeof(wpc->error_message), "too many channels!");
         return FALSE;
     }
 

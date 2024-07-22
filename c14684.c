@@ -1,9 +1,9 @@
 void ftoa_bounded_extra(JsVarFloat val,char *str, size_t len, int radix, int fractionalDigits) {
   const JsVarFloat stopAtError = 0.0000001;
-  if (isnan(val)) strncpy(str,"NaN",len);
+  if (isnan(val)) strcpy_s(str, len, "NaN");
   else if (!isfinite(val)) {
-    if (val<0) strncpy(str,"-Infinity",len);
-    else strncpy(str,"Infinity",len);
+    if (val<0) strcpy_s(str, len, "-Infinity");
+    else strcpy_s(str, len, "Infinity");
   } else {
     if (val<0) {
       if (--len <= 0) { *str=0; return; } // bounds check

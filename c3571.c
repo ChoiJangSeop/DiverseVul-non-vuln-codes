@@ -227,7 +227,7 @@ fperror:
 	pass.free_fp = pass.free_ufp = 1;
 	memset(&eocd, 0, sizeof(eocd));
 
-	strncpy(eocd.signature, "PK\5\6", 4);
+	strcpy_s(eocd.signature, 4, "PK\5\6");
 	if (!phar->is_data && !phar->sig_flags) {
 		phar->sig_flags = PHAR_SIG_SHA1;
 	}

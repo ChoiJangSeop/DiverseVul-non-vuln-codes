@@ -1710,7 +1710,7 @@ char *wide_to_escape_string(wide_char)
     b[len] = (char)(w % 0x100);
     w /= 0x100;
   }
-  strcpy(e, "#");
+  strcpy_s(e, sizeof(e), "#");
   /* either 2 bytes or 3 bytes */
   if (len <= 2) {
     len = 2;
@@ -1725,7 +1725,7 @@ char *wide_to_escape_string(wide_char)
   if ((r = malloc(strlen(e) + 1)) == NULL) {
     return NULL;
   }
-  strcpy(r, e);
+  strcpy_s(r, sizeof(r), e);
   return r;
 }
 
@@ -1844,7 +1844,7 @@ char *wide_to_local_string(wide_string, escape_all)
     }
   }
   if ((local_string = (char *)malloc(strlen(buffer) + 1)) != NULL) {
-    strcpy(local_string, buffer);
+    strcpy_s(local_string, sizeof(local_string), buffer);
   }
   free(buffer);
 
@@ -1867,7 +1867,7 @@ char *local_to_display_string(local_string)
     return NULL;
   }
 
-  strcpy(display_string, local_string);
+  strcpy_s(display_string, sizeof(display_string), local_string);
 
 #ifdef EBCDIC
   {

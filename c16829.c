@@ -34,7 +34,7 @@ compileTranslationTable (const char *tableList)
       break;
   if (k == listLength)
     {				/* Only one file */
-      strcpy (tablePath, tableList);
+      strcpy_s(tablePath, sizeof(tablePath), tableList);
       for (k = strlen (tablePath); k >= 0; k--)
 	if (tablePath[k] == '\\' || tablePath[k] == '/')
 	  break;
@@ -46,7 +46,7 @@ compileTranslationTable (const char *tableList)
   else
     {				/* Compile a list of files */
       currentListPos = k + 1;
-      strncpy (tablePath, tableList, k);
+      strcpy_s(tablePath, k, tableList);
       tablePath[k] = 0;
       for (k = strlen (tablePath); k >= 0; k--)
 	if (tablePath[k] == '\\' || tablePath[k] == '/')

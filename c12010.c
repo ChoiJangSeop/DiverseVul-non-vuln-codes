@@ -11,7 +11,7 @@ static GF_Err gf_media_export_filters(GF_MediaExporter *dumper)
 	Bool use_dynext = GF_FALSE;
 
 	args = NULL;
-	strcpy(szExt, "");
+	strcpy_s(szExt, sizeof(szExt), "");
 	if (dumper->trackID && dumper->file) {
 		u32 msubtype = 0;
 		u32 mtype = 0;
@@ -77,7 +77,7 @@ static GF_Err gf_media_export_filters(GF_MediaExporter *dumper)
 				szExt[0]=0;
 			} else {
 				char *sep;
-				strncpy(szExt, sname, 29);
+				strcpy_s(szExt, 29, sname);
 				szExt[29]=0;
 				sep = strchr(szExt, '|');
 				if (sep) sep[0] = 0;
@@ -167,13 +167,13 @@ static GF_Err gf_media_export_filters(GF_MediaExporter *dumper)
 		e |= gf_dynstrcat(&args, dumper->out_name, NULL);
 
 		if (dumper->flags & GF_EXPORT_NHNT) {
-			strcpy(szExt, "nhnt");
+			strcpy_s(szExt, sizeof(szExt), "nhnt");
 			e |= gf_dynstrcat(&args, ":clone", NULL);
 			no_ext = GF_TRUE;
 			if (!ext)
 				e |= gf_dynstrcat(&args, ":dynext", NULL);
 		} else if (dumper->flags & GF_EXPORT_NHML) {
-			strcpy(szExt, "nhml");
+			strcpy_s(szExt, sizeof(szExt), "nhml");
 			e |= gf_dynstrcat(&args, ":clone", NULL);
 			no_ext = GF_TRUE;
 			if (!ext)

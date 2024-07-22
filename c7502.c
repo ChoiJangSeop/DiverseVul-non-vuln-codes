@@ -51,7 +51,7 @@ it is obtained from a command line (the -M or -q options), and otherwise it is
 known to be a valid message id. */
 
 if (id != message_id)
-  Ustrcpy(message_id, id);
+  Ustrcpy_s(message_id, sizeof(message_id), id);
 deliver_force = forced;
 return_count = 0;
 message_size = 0;

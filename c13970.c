@@ -22,7 +22,7 @@ fiddle_handle_sym(void *handle, const char *name)
 #if defined(__CYGWIN__) || defined(_WIN32) || defined(__MINGW32__)
 	{
 	    char *name_a = (char*)xmalloc(len+2);
-	    strcpy(name_a, name);
+	    strcpy_s(name_a, sizeof(name_a), name);
 	    name_n = name_a;
 	    name_a[len]   = 'A';
 	    name_a[len+1] = '\0';

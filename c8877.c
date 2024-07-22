@@ -113,7 +113,7 @@ mptctl_getiocinfo (unsigned long arg, unsigned int data_size)
 
 	/* Set the Version Strings.
 	 */
-	strncpy (karg->driverVersion, MPT_LINUX_PACKAGE_NAME, MPT_IOCTL_VERSION_LENGTH);
+	strcpy_s(karg->driverVersion, MPT_IOCTL_VERSION_LENGTH, MPT_LINUX_PACKAGE_NAME);
 	karg->driverVersion[MPT_IOCTL_VERSION_LENGTH-1]='\0';
 
 	karg->busChangeEvent = 0;

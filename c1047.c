@@ -209,7 +209,7 @@ dfamust (struct dfa *d)
       MALLOC(dm, 1);
       dm->exact = exact;
       MALLOC(dm->must, strlen(result) + 1);
-      strcpy(dm->must, result);
+      strcpy_s(dm->must, sizeof(dm->must), result);
       dm->next = d->musts;
       d->musts = dm;
     }

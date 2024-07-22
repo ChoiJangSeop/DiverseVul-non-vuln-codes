@@ -99,7 +99,7 @@ CreateStatistics(CreateStatsStmt *stmt)
 											  "stat",
 											  namespaceId);
 	}
-	namestrcpy(&stxname, namestr);
+	namestrcpy_s(&stxname, sizeof(&stxname), namestr);
 
 	/*
 	 * Deal with the possibility that the statistics object already exists.

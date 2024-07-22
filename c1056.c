@@ -28,7 +28,7 @@ get_nondigit_option (int argc, char *const *argv, int *default_context)
           /* Too many digits.  Append "..." to make context_length_arg
              complain about "X...", where X contains the digits seen
              so far.  */
-          strcpy (p, "...");
+          strcpy_s(p, sizeof(p), "...");
           p += 3;
           break;
         }

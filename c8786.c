@@ -171,7 +171,7 @@ static int mod_process(void *arg, eap_handler_t *handler)
 			talloc_free(fake);
 			return 0;
 		}
-		fr_pair_value_bstrncpy(fake->username, session->peer_id, session->peer_id_len);
+		fr_pair_value_bstrcpy_s(fake->username, session->peer_id_len, session->peer_id);
 		fr_pair_add(&fake->packet->vps, fake->username);
 
 		if ((vp = fr_pair_find_by_num(request->config, PW_VIRTUAL_SERVER, 0, TAG_ANY)) != NULL) {

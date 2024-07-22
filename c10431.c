@@ -7,7 +7,7 @@ Mangle(input, control)		/* returns a pointer to a controlled Mangle */
     static char area[STRINGSIZE];
     char area2[STRINGSIZE];
     area[0] = '\0';
-    strcpy(area, input);
+    strcpy_s(area, sizeof(area), input);
 
     for (ptr = control; *ptr; ptr++)
     {
@@ -34,7 +34,7 @@ Mangle(input, control)		/* returns a pointer to a controlled Mangle */
 	    strcat(area, Reverse(area));
 	    break;
 	case RULE_DUPLICATE:
-	    strcpy(area2, area);
+	    strcpy_s(area2, sizeof(area2), area);
 	    strcat(area, area2);
 	    break;
 	case RULE_GT:
@@ -84,7 +84,7 @@ Mangle(input, control)		/* returns a pointer to a controlled Mangle */
 	    {
 		area2[0] = *(++ptr);
 		strcpy(area2 + 1, area);
-		strcpy(area, area2);
+		strcpy_s(area, sizeof(area), area2);
 	    }
 	    break;
 	case RULE_APPEND:
@@ -118,7 +118,7 @@ Mangle(input, control)		/* returns a pointer to a controlled Mangle */
 		    Debug(1, "Mangle: extract: weird argument in '%s'\n", control);
 		    return NULL;
 		}
-		strcpy(area2, area);
+		strcpy_s(area2, sizeof(area2), area);
 		for (i = 0; length-- && area2[start + i]; i++)
 		{
 		    area[i] = area2[start + i];
@@ -176,8 +176,8 @@ Mangle(input, control)		/* returns a pointer to a controlled Mangle */
 		    *(p2++) = *(p1++);
 		}
 		*(p2++) = *(++ptr);
-		strcpy(p2, p1);
-		strcpy(area, area2);
+		strcpy_s(p2, sizeof(p2), p1);
+		strcpy_s(area, sizeof(area), area2);
 	    }
 	    break;
 	    /* THE FOLLOWING RULES REQUIRE CLASS MATCHING */

@@ -257,7 +257,7 @@ int mp4boxMain(int argc, char **argv)
 #endif
 
 			if (outName)
-				strcpy(outfile, outName);
+				strcpy_s(outfile, sizeof(outfile), outName);
 			else {
 				const char *sep = gf_file_basename(inName);
 				char *ext = gf_file_ext_start(sep);
@@ -267,7 +267,7 @@ int mp4boxMain(int argc, char **argv)
 			}
 		} else {
 			if (outName)
-				strcpy(outfile, outName);
+				strcpy_s(outfile, sizeof(outfile), outName);
 			else {
 				char *dst = strdup(inName);
 				char *ext = strstr(dst, ".m3u8");
@@ -375,7 +375,7 @@ int mp4boxMain(int argc, char **argv)
 			return mp4box_cleanup(1);
 		}
 		/* Prepare the export */
-		strcpy(outfile, inName);
+		strcpy_s(outfile, sizeof(outfile), inName);
 		if (strchr(outfile, '.')) {
 			while (outfile[strlen(outfile)-1] != '.') outfile[strlen(outfile)-1] = 0;
 			outfile[strlen(outfile)-1] = 0;
@@ -605,7 +605,7 @@ int mp4boxMain(int argc, char **argv)
 		FILE *logs = NULL;
 		if (do_scene_log) {
 			char alogfile[GF_MAX_PATH];
-			strcpy(alogfile, inName);
+			strcpy_s(alogfile, sizeof(alogfile), inName);
 			if (strchr(alogfile, '.')) {
 				while (alogfile[strlen(alogfile)-1] != '.') alogfile[strlen(alogfile)-1] = 0;
 				alogfile[strlen(alogfile)-1] = 0;
@@ -669,7 +669,7 @@ int mp4boxMain(int argc, char **argv)
 		sep = strrchr(outfile, '.');
 		if (sep) sep[0] = 0;
 		if (!outName) strcat(outfile, "_dash");
-		strcpy(szMPD, outfile);
+		strcpy_s(szMPD, sizeof(szMPD), outfile);
 		if (outName && sep) {
 			sep[0] = '.';
 			strcat(szMPD, sep);
@@ -1459,14 +1459,14 @@ int mp4boxMain(int argc, char **argv)
 			goto exit;
 		}
 		if (outName) {
-			strcpy(outfile, outName);
+			strcpy_s(outfile, sizeof(outfile), outName);
 		} else {
 			char *rel_name = strrchr(inName, GF_PATH_SEPARATOR);
 			if (!rel_name) rel_name = strrchr(inName, '/');
 
-			strcpy(outfile, "");
+			strcpy_s(outfile, sizeof(outfile), "");
 			if (tmpdir) {
-				strcpy(outfile, tmpdir);
+				strcpy_s(outfile, sizeof(outfile), tmpdir);
 				if (!strchr("\\/", tmpdir[strlen(tmpdir)-1])) strcat(outfile, "/");
 			}
 			if (!pack_file) strcat(outfile, "out_");
@@ -1555,7 +1555,7 @@ int mp4boxMain(int argc, char **argv)
 		}
 
 	} else if (outName) {
-		strcpy(outfile, outName);
+		strcpy_s(outfile, sizeof(outfile), outName);
 	}
 
 	for (j=0; j<nb_track_act; j++) {

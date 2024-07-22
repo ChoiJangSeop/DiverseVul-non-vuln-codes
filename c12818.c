@@ -73,7 +73,7 @@ GF_Err import_file(GF_ISOFile *dest, char *inName, u32 import_flags, GF_Fraction
 
 	memset(&import, 0, sizeof(GF_MediaImporter));
 
-	strcpy(szName, inName);
+	strcpy_s(szName, sizeof(szName), inName);
 #ifdef WIN32
 	/*dirty hack for msys&mingw: when we use import options, the ':' separator used prevents msys from translating the path
 	we do this for regular cases where the path starts with the drive letter. If the path start with anything else (/home , /opt, ...) we're screwed :( */

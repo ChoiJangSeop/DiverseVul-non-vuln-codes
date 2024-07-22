@@ -23,7 +23,7 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc,
   parse_cfg(flags, argc, argv, cfg);
 
   if (!cfg->origin) {
-    strcpy(buffer, DEFAULT_ORIGIN_PREFIX);
+    strcpy_s(buffer, sizeof(buffer), DEFAULT_ORIGIN_PREFIX);
 
     if (gethostname(buffer + strlen(DEFAULT_ORIGIN_PREFIX),
                     BUFSIZE - strlen(DEFAULT_ORIGIN_PREFIX)) == -1) {

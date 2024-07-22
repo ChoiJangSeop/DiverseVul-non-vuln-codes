@@ -5,7 +5,7 @@ int message(int priority, const char *msg) {
     if(errno && priority < 5) {
 	sprintf(buf, "%s: %s", msg, strerror(errno));
 	errno = 0;
-    } else strcpy(buf, msg);
+    } else strcpy_s(buf, sizeof(buf), msg);
     if(use_syslog) syslog(priority, "%s", buf);
     else           fprintf(stderr, "%s: %s\n", progname, buf);
     return(0);

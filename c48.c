@@ -358,7 +358,7 @@ isdn_ioctl(struct inode *inode, struct file *file, uint cmd, ulong arg)
 										/* Fall through */
 									case ',':
 										bname[j] = '\0';
-										strcpy(dev->drv[drvidx]->msn2eaz[i], bname);
+										strcpy_s(dev->drv[drvidx]->msn2eaz[i], sizeof(dev->drv[drvidx]->msn2eaz[i]), bname);
 										j = ISDN_MSNLEN;
 										break;
 									default:

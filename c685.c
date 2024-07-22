@@ -23,7 +23,7 @@ static void cmd_list(char *arg1, char *arg2)
 
 	prot_printf(nntp_out, "215 List of newsgroups follows:\r\n");
 
-	strcpy(pattern, newsprefix);
+	strcpy_s(pattern, sizeof(pattern), newsprefix);
 	strcat(pattern, "*");
 	list_cb(NULL, 0, 0, NULL);
 	mboxlist_findall(NULL, pattern, 0, nntp_userid, nntp_authstate,
@@ -82,7 +82,7 @@ static void cmd_list(char *arg1, char *arg2)
 
 	prot_printf(nntp_out, "215 List of newsgroups follows:\r\n");
 
-	strcpy(pattern, newsprefix);
+	strcpy_s(pattern, sizeof(pattern), newsprefix);
 	strcat(pattern, "*");
 	list_cb(NULL, 0, 0, NULL);
 	mboxlist_findall(NULL, pattern, 0, nntp_userid, nntp_authstate,
@@ -91,7 +91,7 @@ static void cmd_list(char *arg1, char *arg2)
 	/* proxy to the backends */
 	hash_enumerate(&lrock.server_table, list_proxy, &erock);
 
-	strcpy(pattern, newsprefix);
+	strcpy_s(pattern, sizeof(pattern), newsprefix);
 	strcat(pattern, "*");
 	annotatemore_findall(pattern, "/comment",
 			     newsgroups_cb, lrock.wild, NULL);

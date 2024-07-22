@@ -3,7 +3,7 @@ main(int argc, char *argv[])
   int cnt,rc,cc;
   char cmnd[255];
 
-  strcpy(cmnd, CMD);
+  strcpy_s(cmnd, sizeof(cmnd), CMD);
 
   if (argc > 1)
   {

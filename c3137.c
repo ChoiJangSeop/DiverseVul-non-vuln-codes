@@ -142,9 +142,9 @@ isdn_ppp_ioctl(int min, struct file *file, unsigned int cmd, unsigned long arg)
 		memset((char *)&pci, 0, sizeof(struct pppcallinfo));
 		if (lp)
 		{
-			strncpy(pci.local_num, lp->msn, 63);
+			strcpy_s(pci.local_num, 63, lp->msn);
 			if (lp->dial) {
-				strncpy(pci.remote_num, lp->dial->num, 63);
+				strcpy_s(pci.remote_num, 63, lp->dial->num);
 			}
 			pci.charge_units = lp->charge;
 			if (lp->outgoing)

@@ -30,7 +30,7 @@ static uint dump_events_for_db(char *db)
   if (mysql_query_with_error_report(mysql, &event_list_res, "show events"))
     DBUG_RETURN(0);
 
-  strcpy(delimiter, ";");
+  strcpy_s(delimiter, sizeof(delimiter), ";");
   if (mysql_num_rows(event_list_res) > 0)
   {
     if (opt_xml)

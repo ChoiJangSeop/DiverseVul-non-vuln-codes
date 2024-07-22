@@ -238,7 +238,7 @@ AnyP::Uri::parse(const HttpRequestMethod& method, const SBuf &rawUrl)
 
             case URI_WHITESPACE_ENCODE:
                 t = rfc1738_escape_unescaped(urlpath);
-                xstrncpy(urlpath, t, MAX_URL);
+                xstrcpy_s(urlpath, MAX_URL, t);
                 break;
 
             case URI_WHITESPACE_CHOP:

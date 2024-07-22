@@ -63,7 +63,7 @@ run_cmd(int fd, ...)
 			int n;
 			va_list vls;
 			
-			strcpy(cmd, EXEC);
+			strcpy_s(cmd, sizeof(cmd), EXEC);
 			c = &cmd[sizeof(EXEC)- 1];
 			ce = cmd + sizeof(cmd) - 1;
 			va_start(vls, fd);

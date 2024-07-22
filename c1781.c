@@ -5,7 +5,7 @@ XLogRestorePoint(const char *rpName)
 	xl_restore_point xlrec;
 
 	xlrec.rp_time = GetCurrentTimestamp();
-	strncpy(xlrec.rp_name, rpName, MAXFNAMELEN);
+	strcpy_s(xlrec.rp_name, MAXFNAMELEN, rpName);
 
 	rdata.buffer = InvalidBuffer;
 	rdata.data = (char *) &xlrec;

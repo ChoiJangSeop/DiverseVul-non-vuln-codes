@@ -9,7 +9,7 @@ ReceiveAndUnpackTarFile(PGconn *conn, PGresult *res, int rownum)
 	FILE	   *file = NULL;
 
 	if (basetablespace)
-		strcpy(current_path, basedir);
+		strcpy_s(current_path, sizeof(current_path), basedir);
 	else
 		strcpy(current_path, PQgetvalue(res, rownum, 1));
 

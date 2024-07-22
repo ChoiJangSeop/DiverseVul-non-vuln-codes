@@ -53,8 +53,7 @@ cifs_get_smb_ses(struct TCP_Server_Info *server, struct smb_vol *volume_info)
 			&server->addr.sockAddr.sin_addr.s_addr);
 
 	if (volume_info->username)
-		strncpy(ses->userName, volume_info->username,
-			MAX_USERNAME_SIZE);
+		strcpy_s(ses->userName, MAX_USERNAME_SIZE, volume_info->username);
 
 	/* volume_info->password freed at unmount */
 	if (volume_info->password) {
@@ -66,7 +65,7 @@ cifs_get_smb_ses(struct TCP_Server_Info *server, struct smb_vol *volume_info)
 		int len = strlen(volume_info->domainname);
 		ses->domainName = kmalloc(len + 1, GFP_KERNEL);
 		if (ses->domainName)
-			strcpy(ses->domainName, volume_info->domainname);
+			strcpy_s(ses->domainName, sizeof(ses->domainName), volume_info->domainname);
 	}
 	ses->linux_uid = volume_info->linux_uid;
 	ses->overrideSecFlg = volume_info->secFlg;

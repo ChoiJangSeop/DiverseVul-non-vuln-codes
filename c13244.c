@@ -51,8 +51,7 @@ static int ecryptfs_parse_options(struct ecryptfs_sb_info *sbi, char *options)
 			cipher_name_dst =
 				mount_crypt_stat->
 				global_default_cipher_name;
-			strncpy(cipher_name_dst, cipher_name_src,
-				ECRYPTFS_MAX_CIPHER_NAME_SIZE);
+			strcpy_s(cipher_name_dst, ECRYPTFS_MAX_CIPHER_NAME_SIZE, cipher_name_src);
 			cipher_name_dst[ECRYPTFS_MAX_CIPHER_NAME_SIZE] = '\0';
 			cipher_name_set = 1;
 			break;
@@ -83,7 +82,7 @@ static int ecryptfs_parse_options(struct ecryptfs_sb_info *sbi, char *options)
 			fnek_src = args[0].from;
 			fnek_dst =
 				mount_crypt_stat->global_default_fnek_sig;
-			strncpy(fnek_dst, fnek_src, ECRYPTFS_SIG_SIZE_HEX);
+			strcpy_s(fnek_dst, ECRYPTFS_SIG_SIZE_HEX, fnek_src);
 			mount_crypt_stat->global_default_fnek_sig[
 				ECRYPTFS_SIG_SIZE_HEX] = '\0';
 			rc = ecryptfs_add_global_auth_tok(
@@ -105,8 +104,7 @@ static int ecryptfs_parse_options(struct ecryptfs_sb_info *sbi, char *options)
 			fn_cipher_name_src = args[0].from;
 			fn_cipher_name_dst =
 				mount_crypt_stat->global_default_fn_cipher_name;
-			strncpy(fn_cipher_name_dst, fn_cipher_name_src,
-				ECRYPTFS_MAX_CIPHER_NAME_SIZE);
+			strcpy_s(fn_cipher_name_dst, ECRYPTFS_MAX_CIPHER_NAME_SIZE, fn_cipher_name_src);
 			mount_crypt_stat->global_default_fn_cipher_name[
 				ECRYPTFS_MAX_CIPHER_NAME_SIZE] = '\0';
 			fn_cipher_name_set = 1;
@@ -145,13 +143,11 @@ static int ecryptfs_parse_options(struct ecryptfs_sb_info *sbi, char *options)
 		int cipher_name_len = strlen(ECRYPTFS_DEFAULT_CIPHER);
 
 		BUG_ON(cipher_name_len >= ECRYPTFS_MAX_CIPHER_NAME_SIZE);
-		strcpy(mount_crypt_stat->global_default_cipher_name,
-		       ECRYPTFS_DEFAULT_CIPHER);
+		strcpy_s(mount_crypt_stat->global_default_cipher_name, sizeof(mount_crypt_stat->global_default_cipher_name), ECRYPTFS_DEFAULT_CIPHER);
 	}
 	if ((mount_crypt_stat->flags & ECRYPTFS_GLOBAL_ENCRYPT_FILENAMES)
 	    && !fn_cipher_name_set)
-		strcpy(mount_crypt_stat->global_default_fn_cipher_name,
-		       mount_crypt_stat->global_default_cipher_name);
+		strcpy_s(mount_crypt_stat->global_default_fn_cipher_name, sizeof(mount_crypt_stat->global_default_fn_cipher_name), mount_crypt_stat->global_default_cipher_name);
 	if (!cipher_key_bytes_set)
 		mount_crypt_stat->global_default_cipher_key_size = 0;
 	if ((mount_crypt_stat->flags & ECRYPTFS_GLOBAL_ENCRYPT_FILENAMES)

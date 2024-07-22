@@ -86,7 +86,7 @@ static char txt_no_note[] = "No note in voice overlay";
 			}
 			if (voice3 > 0) {
 				p_voice3 = &voice_tb[voice3];
-				strcpy(p_voice3->id, p_voice2->id);
+				strcpy_s(p_voice3->id, sizeof(p_voice3->id), p_voice2->id);
 				p_voice3->second = 1;
 				parsys->voice[voice3].second = 1;
 				p_voice3->scale = voice_tb[p_voice->clone].scale;

@@ -3,12 +3,12 @@ bntseq_t *bns_restore(const char *prefix)
 	char ann_filename[1024], amb_filename[1024], pac_filename[1024], alt_filename[1024];
 	FILE *fp;
 	bntseq_t *bns;
-	strcat(strcpy(ann_filename, prefix), ".ann");
-	strcat(strcpy(amb_filename, prefix), ".amb");
-	strcat(strcpy(pac_filename, prefix), ".pac");
+	strcat(strcpy_s(ann_filename, sizeof(ann_filename), prefix), ".ann");
+	strcat(strcpy_s(amb_filename, sizeof(amb_filename), prefix), ".amb");
+	strcat(strcpy_s(pac_filename, sizeof(pac_filename), prefix), ".pac");
 	bns = bns_restore_core(ann_filename, amb_filename, pac_filename);
 	if (bns == 0) return 0;
-	if ((fp = fopen(strcat(strcpy(alt_filename, prefix), ".alt"), "r")) != 0) { // read .alt file if present
+	if ((fp = fopen(strcat(strcpy_s(alt_filename, sizeof(alt_filename), prefix), ".alt"), "r")) != 0) { // read .alt file if present
 		char str[1024];
 		khash_t(str) *h;
 		int c, i, absent;

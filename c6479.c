@@ -84,7 +84,7 @@ static ssize_t parse8BIM(Image *ifile, Image *ofile)
                 name=(char *) AcquireQuantumMemory(strlen(newstr)+MagickPathExtent,
                   sizeof(*name));
                 if (name)
-                  (void) strcpy(name,newstr);
+                  (void) strcpy_s(name, sizeof(name), newstr);
                 break;
             }
             state++;

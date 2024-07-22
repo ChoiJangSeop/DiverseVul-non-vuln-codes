@@ -110,11 +110,11 @@ void get_cmdln_options(int argc, char *argv[]) {
 #ifdef PROC_DISKSTATS
 			case 1000:
 				if (strlen(optarg)<PATH_MAX) 
-					strcpy(PROC_DISKSTATS_FILE,optarg);
+					strcpy_s(PROC_DISKSTATS_FILE, sizeof(PROC_DISKSTATS_FILE), optarg);
 				break;
          case 1001:
             if (strlen(optarg)<PATH_MAX)
-               strcpy(PROC_PARTITIONS_FILE,optarg);
+               strcpy_s(PROC_PARTITIONS_FILE, sizeof(PROC_PARTITIONS_FILE), optarg);
 				break;
 #endif				
 #if IOSERVICE_IN
@@ -157,7 +157,7 @@ void get_cmdln_options(int argc, char *argv[]) {
                 break;
 #ifdef PROC_NET_DEV
 			case 'f':
-                if (optarg && (strlen(optarg)<PATH_MAX)) strcpy(PROC_FILE,optarg);
+                if (optarg && (strlen(optarg)<PATH_MAX)) strcpy_s(PROC_FILE, sizeof(PROC_FILE), optarg);
                 break;
 #endif			
 			case 'i':
@@ -200,7 +200,7 @@ void get_cmdln_options(int argc, char *argv[]) {
                 break;
 #if NETSTAT && ALLOW_NETSTATPATH
             case 'n':
-                if (optarg && (strlen(optarg)<PATH_MAX)) strcpy(NETSTAT_FILE,optarg);
+                if (optarg && (strlen(optarg)<PATH_MAX)) strcpy_s(NETSTAT_FILE, sizeof(NETSTAT_FILE), optarg);
                 break;
 #endif                
             case 'V':

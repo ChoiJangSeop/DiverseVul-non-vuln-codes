@@ -72,7 +72,7 @@ int bnep_add_connection(struct bnep_connadd_req *req, struct socket *sock)
 	}
 
 	up_write(&bnep_session_sem);
-	strcpy(req->device, dev->name);
+	strcpy_s(req->device, sizeof(req->device), dev->name);
 	return 0;
 
 failed:

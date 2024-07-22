@@ -24,14 +24,14 @@ process_copy_pass ()
 
       dirname_len += strlen (pwd) + 1;
       ds_init (&output_name, dirname_len + 2);
-      strcpy (output_name.ds_string, pwd);
+      strcpy_s(output_name.ds_string, sizeof(output_name.ds_string), pwd);
       strcat (output_name.ds_string, "/");
       strcat (output_name.ds_string, directory_name);
     }
   else
     {
       ds_init (&output_name, dirname_len + 2);
-      strcpy (output_name.ds_string, directory_name);
+      strcpy_s(output_name.ds_string, sizeof(output_name.ds_string), directory_name);
     }
   output_name.ds_string[dirname_len] = '/';
   output_is_seekable = true;

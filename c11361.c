@@ -11,7 +11,7 @@ MOBI_RET mobi_reconstruct_infl(char *outstring, const MOBIIndx *infl, const MOBI
     const char *iform_tag = "<idx:iform%s value=\"%s\"/>";
     char name_attr[INDX_INFLBUF_SIZEMAX + 1];
     char infl_tag[INDX_INFLBUF_SIZEMAX + 1];
-    strcpy(outstring, start_tag);
+    strcpy_s(outstring, sizeof(outstring), start_tag);
     size_t initlen = strlen(start_tag) + strlen(end_tag);
     size_t outlen = initlen;
     size_t label_length = strlen(label);

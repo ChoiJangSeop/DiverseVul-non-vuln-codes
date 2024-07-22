@@ -254,7 +254,7 @@ static int sv_body(char *hostname, int s, unsigned char *context)
 					printf("SSL_do_handshake -> %d\n",i);
 					i=0; /*13; */
 					continue;
-					/* strcpy(buf,"server side RE-NEGOTIATE\n"); */
+					/* strcpy_s(buf, sizeof(buf), "server side RE-NEGOTIATE\n"); */
 					}
 				if ((buf[0] == 'R') &&
 					((buf[1] == '\n') || (buf[1] == '\r')))
@@ -266,7 +266,7 @@ static int sv_body(char *hostname, int s, unsigned char *context)
 					printf("SSL_do_handshake -> %d\n",i);
 					i=0; /* 13; */
 					continue;
-					/* strcpy(buf,"server side RE-NEGOTIATE asking for client cert\n"); */
+					/* strcpy_s(buf, sizeof(buf), "server side RE-NEGOTIATE asking for client cert\n"); */
 					}
 				if (buf[0] == 'P')
 					{

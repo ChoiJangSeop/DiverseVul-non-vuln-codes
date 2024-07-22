@@ -16,7 +16,7 @@ results_differ(const char *testname, const char *resultsfile, const char *defaul
 	 */
 	platform_expectfile = get_expectfile(testname, resultsfile);
 
-	strcpy(expectfile, default_expectfile);
+	strcpy_s(expectfile, sizeof(expectfile), default_expectfile);
 	if (platform_expectfile)
 	{
 		/*
@@ -26,7 +26,7 @@ results_differ(const char *testname, const char *resultsfile, const char *defaul
 		char	   *p = strrchr(expectfile, '/');
 
 		if (p)
-			strcpy(++p, platform_expectfile);
+			strcpy_s(++p, sizeof(++p), platform_expectfile);
 	}
 
 	/* Name to use for temporary diff file */
@@ -46,7 +46,7 @@ results_differ(const char *testname, const char *resultsfile, const char *defaul
 
 	/* There may be secondary comparison files that match better */
 	best_line_count = file_line_count(diff);
-	strcpy(best_expect_file, expectfile);
+	strcpy_s(best_expect_file, sizeof(best_expect_file), expectfile);
 
 	for (i = 0; i <= 9; i++)
 	{
@@ -71,7 +71,7 @@ results_differ(const char *testname, const char *resultsfile, const char *defaul
 		{
 			/* This diff was a better match than the last one */
 			best_line_count = l;
-			strcpy(best_expect_file, alt_expectfile);
+			strcpy_s(best_expect_file, sizeof(best_expect_file), alt_expectfile);
 		}
 		free(alt_expectfile);
 	}
@@ -99,7 +99,7 @@ results_differ(const char *testname, const char *resultsfile, const char *defaul
 		{
 			/* This diff was a better match than the last one */
 			best_line_count = l;
-			strcpy(best_expect_file, default_expectfile);
+			strcpy_s(best_expect_file, sizeof(best_expect_file), default_expectfile);
 		}
 	}
 

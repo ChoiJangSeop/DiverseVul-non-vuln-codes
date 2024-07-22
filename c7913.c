@@ -31,9 +31,9 @@ int line6_probe(struct usb_interface *interface,
 	line6->usbdev = usbdev;
 	line6->ifcdev = &interface->dev;
 
-	strcpy(card->id, properties->id);
-	strcpy(card->driver, driver_name);
-	strcpy(card->shortname, properties->name);
+	strcpy_s(card->id, sizeof(card->id), properties->id);
+	strcpy_s(card->driver, sizeof(card->driver), driver_name);
+	strcpy_s(card->shortname, sizeof(card->shortname), properties->name);
 	sprintf(card->longname, "Line 6 %s at USB %s", properties->name,
 		dev_name(line6->ifcdev));
 	card->private_free = line6_destruct;

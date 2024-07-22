@@ -67,7 +67,7 @@ static mf_t *open_mf_pattern(void *talloc_ctx, struct demuxer *d, char *filename
 
 #if HAVE_GLOB
     if (!strchr(filename, '%')) {
-        strcpy(fname, filename);
+        strcpy_s(fname, sizeof(fname), filename);
         if (!strchr(filename, '*'))
             strcat(fname, "*");
 

@@ -40,7 +40,7 @@ void M_LoadDefaults (void)
 		    len = strlen(strparm);
 		    newstring = (char *) malloc(len);
 		    strparm[len-1] = 0;
-		    strcpy(newstring, strparm+1);
+		    strcpy_s(newstring, sizeof(newstring), strparm+1);
 		}
 		else if (strparm[0] == '0' && strparm[1] == 'x')
 		    sscanf(strparm+2, "%x", &parm);

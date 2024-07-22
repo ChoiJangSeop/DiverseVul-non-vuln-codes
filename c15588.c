@@ -40,7 +40,7 @@ bool extract_sockaddr(char *url, char **sockaddr_url, char **sockaddr_port)
 		if (slash)
 			*slash = '\0';
 	} else
-		strcpy(port, "80");
+		strcpy_s(port, sizeof(port), "80");
 
 	*sockaddr_port = strdup(port);
 	*sockaddr_url = strdup(url_address);

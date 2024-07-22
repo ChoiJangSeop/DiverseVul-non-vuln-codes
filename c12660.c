@@ -125,7 +125,7 @@ static void gf_dump_vrml_sffield(GF_SceneDumper *sdump, u32 type, void *ptr, Boo
 			str = gf_malloc(sizeof(char)* bufsize);
 			if (str) {
 				s32 res;
-				strcpy(str, "data:application/octet-string;base64,");
+				strcpy_s(str, sizeof(str), "data:application/octet-string;base64,");
 				res = gf_base64_encode(((M_BitWrapper*)node)->buffer.buffer, ((M_BitWrapper*)node)->buffer_len, str+37, bufsize-37);
 				if (res<0) {
 					gf_free(str);

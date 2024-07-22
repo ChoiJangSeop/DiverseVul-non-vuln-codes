@@ -32,7 +32,7 @@ int hashtable_set(hashtable_t *hashtable,
 
         pair->hash = hash;
         pair->serial = serial;
-        strcpy(pair->key, key);
+        strcpy_s(pair->key, sizeof(pair->key), key);
         pair->value = value;
         list_init(&pair->list);
 

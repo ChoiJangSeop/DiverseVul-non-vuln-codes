@@ -20,6 +20,6 @@ get_ruser(pam_handle_t *pamh, char *ruserbuf, size_t ruserbuflen)
 		*ruserbuf = '\0';
 		return -1;
 	}
-	strcpy(ruserbuf, ruser);
+	strcpy_s(ruserbuf, sizeof(ruserbuf), ruser);
 	return 0;
 }

@@ -467,7 +467,7 @@ Error in server response, closing control connection.\n"));
               memcpy (p, con->id, idlen);
               p += idlen;
               *p++ = '/';
-              strcpy (p, target);
+              strcpy_s(p, sizeof(p), target);
 
               DEBUGP (("Prepended initial PWD to relative path:\n"));
               DEBUGP (("   pwd: '%s'\n   old: '%s'\n  new: '%s'\n",
@@ -499,7 +499,7 @@ Error in server response, closing control connection.\n"));
                  TARGET will be separated with slashes, something like
                  "/INITIAL/FOLDER/DIR/SUBDIR".  Convert that to
                  "[INITIAL.FOLDER.DIR.SUBDIR]".  */
-              strcpy (ntarget, target);
+              strcpy_s(ntarget, sizeof(ntarget), target);
               assert (*ntarget == '/');
               *ntarget = '[';
               for (tmpp = ntarget + 1; *tmpp; tmpp++)

@@ -17,7 +17,7 @@ static GF_Err isoffin_setup(GF_Filter *filter, ISOMReader *read)
 
 	read->src_crc = gf_crc_32(src, (u32) strlen(src));
 
-	strcpy(szURL, src);
+	strcpy_s(szURL, sizeof(szURL), src);
 	tmp = gf_file_ext_start(szURL);
 	if (tmp) {
 		Bool truncate = GF_TRUE;

@@ -16,7 +16,7 @@ runarg(gs_main_instance * minst, const char *pre, const char *arg,
         lprintf("Out of memory!\n");
         return_error(e_VMerror);
     }
-    strcpy(line, pre);
+    strcpy_s(line, sizeof(line), pre);
     esc_strcat(line, arg);
     strcat(line, post);
     /* If we're running PS from a buffer (i.e. from the "-c" option

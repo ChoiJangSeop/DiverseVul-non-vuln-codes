@@ -8,7 +8,7 @@ xps_load_sfnt_name(xps_font_t *font, char *namep)
     int i, k;
 
     found = 0;
-    strcpy(namep, "Unknown");
+    strcpy_s(namep, sizeof(namep), "Unknown");
 
     offset = xps_find_sfnt_table(font, "name", &length);
     if (offset < 0 || length < 6)

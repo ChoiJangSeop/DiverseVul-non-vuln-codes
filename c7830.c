@@ -14,12 +14,12 @@ pdf_t *pdf_new(const char *name)
           n = name;
 
         pdf->name = malloc(strlen(n) + 1);
-        strcpy(pdf->name, n);
+        strcpy_s(pdf->name, sizeof(pdf->name), n);
     }
     else /* !name */
     {
         pdf->name = malloc(strlen("Unknown") + 1);
-        strcpy(pdf->name, "Unknown");
+        strcpy_s(pdf->name, sizeof(pdf->name), "Unknown");
     }
 
     return pdf;

@@ -8,12 +8,12 @@ add_header_value(VALUE hh, const char *key, int klen, const char *val, int vlen)
 	char		*k = hkey;
 	volatile VALUE	sval = rb_str_new(val, vlen);
 
-	strcpy(hkey, "HTTP_");
+	strcpy_s(hkey, sizeof(hkey), "HTTP_");
 	k = hkey + 5;
 	if ((int)(sizeof(hkey) - 5) <= klen) {
 	    klen = sizeof(hkey) - 6;
 	}
-	strncpy(k, key, klen);
+	strcpy_s(k, klen, key);
 	hkey[klen + 5] = '\0';
 
 	//rb_hash_aset(hh, rb_str_new(hkey, klen + 5), sval);

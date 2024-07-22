@@ -7,7 +7,7 @@ findTable (const char *tableName)
   char trialPath[MAXSTRING];
   if (tableName == NULL || tableName[0] == 0)
     return NULL;
-  strcpy (trialPath, tablePath);
+  strcpy_s(trialPath, sizeof(trialPath), tablePath);
   strcat (trialPath, tableName);
   if ((tableFile = fopen (trialPath, "rb")))
     return tableFile;
@@ -27,7 +27,7 @@ findTable (const char *tableName)
 	    break;
 	if (k == listLength || k == 0)
 	  {			/* Only one file */
-	    strcpy (trialPath, pathList);
+	    strcpy_s(trialPath, sizeof(trialPath), pathList);
 	    strcat (trialPath, pathEnd);
 	    strcat (trialPath, tableName);
 	    if ((tableFile = fopen (trialPath, "rb")))
@@ -35,7 +35,7 @@ findTable (const char *tableName)
 	  }
 	else
 	  {			/* Compile a list of files */
-	    strncpy (trialPath, pathList, k);
+	    strcpy_s(trialPath, k, pathList);
 	    trialPath[k] = 0;
 	    strcat (trialPath, pathEnd);
 	    strcat (trialPath, tableName);
@@ -69,7 +69,7 @@ findTable (const char *tableName)
   pathList = lou_getDataPath ();
   if (pathList)
     {
-      strcpy (trialPath, pathList);
+      strcpy_s(trialPath, sizeof(trialPath), pathList);
       strcat (trialPath, pathEnd);
 #ifdef _WIN32
       strcat (trialPath, "liblouis\\tables\\");
@@ -85,7 +85,7 @@ findTable (const char *tableName)
   strcpy (trialPath, lou_getProgramPath ());
   strcat (trialPath, "\\share\\liblouis\\tables\\");
 #else
-  strcpy (trialPath, TABLESDIR);
+  strcpy_s(trialPath, sizeof(trialPath), TABLESDIR);
   strcat (trialPath, pathEnd);
 #endif
   strcat (trialPath, tableName);

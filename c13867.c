@@ -34,7 +34,7 @@ bool extract_sockaddr(struct pool *pool, char *url)
 	if (port_len)
 		snprintf(port, 6, "%.*s", port_len, port_start);
 	else
-		strcpy(port, "80");
+		strcpy_s(port, sizeof(port), "80");
 
 	free(pool->stratum_port);
 	pool->stratum_port = strdup(port);

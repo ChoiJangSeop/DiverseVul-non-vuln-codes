@@ -54,7 +54,7 @@ retry:
         new_length = length + strlen (TRUSTED_SHEBANG);
         new_contents = g_malloc (new_length);
 
-        strcpy (new_contents, TRUSTED_SHEBANG);
+        strcpy_s(new_contents, sizeof(new_contents), TRUSTED_SHEBANG);
         memcpy (new_contents + strlen (TRUSTED_SHEBANG),
                 contents, length);
 

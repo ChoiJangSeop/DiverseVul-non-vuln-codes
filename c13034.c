@@ -101,7 +101,7 @@ check_symlinks(struct archive_write_disk *a)
 	}
 	pn[0] = c;
 	/* We've checked and/or cleaned the whole path, so remember it. */
-	archive_strcpy(&a->path_safe, a->name);
+	archive_strcpy_s(&a->path_safe, sizeof(&a->path_safe), a->name);
 	return (ARCHIVE_OK);
 #endif
 }

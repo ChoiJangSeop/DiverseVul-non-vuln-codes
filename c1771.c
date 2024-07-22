@@ -117,7 +117,7 @@ identify_system_timezone(void)
 			/* found STD zone */
 			memset(cbuf, 0, sizeof(cbuf));
 			strftime(cbuf, sizeof(cbuf) - 1, "%Z", tm); /* zone abbr */
-			strcpy(std_zone_name, cbuf);
+			strcpy_s(std_zone_name, sizeof(std_zone_name), cbuf);
 			std_ofs = get_timezone_offset(tm);
 		}
 		if (tm->tm_isdst > 0 && dst_zone_name[0] == '\0')
@@ -125,7 +125,7 @@ identify_system_timezone(void)
 			/* found DST zone */
 			memset(cbuf, 0, sizeof(cbuf));
 			strftime(cbuf, sizeof(cbuf) - 1, "%Z", tm); /* zone abbr */
-			strcpy(dst_zone_name, cbuf);
+			strcpy_s(dst_zone_name, sizeof(dst_zone_name), cbuf);
 		}
 		/* Done if found both */
 		if (std_zone_name[0] && dst_zone_name[0])
@@ -151,7 +151,7 @@ identify_system_timezone(void)
 	}
 
 	/* Try just the STD timezone (works for GMT at least) */
-	strcpy(resultbuf, std_zone_name);
+	strcpy_s(resultbuf, sizeof(resultbuf), std_zone_name);
 	if (score_timezone(resultbuf, &tt) > 0)
 		return resultbuf;
 

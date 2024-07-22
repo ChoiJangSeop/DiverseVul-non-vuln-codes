@@ -49,7 +49,7 @@ static Image *ExtractPostscript(Image *image,const ImageInfo *image_info,
   if(exception->severity != UndefinedException) goto FINISH_UNL;     
   if(magic_info->name == (char *) NULL) goto FINISH_UNL;
     
-  (void) strncpy(clone_info->magick,magic_info->name,MagickPathExtent-1);
+  (void) strcpy_s(clone_info->magick, MagickPathExtent-1, magic_info->name);
   
     /* Read nested image */
   /*FormatString(clone_info->filename,"%s:%s",magic_info->name,postscript_file);*/

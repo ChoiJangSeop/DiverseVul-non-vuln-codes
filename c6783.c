@@ -216,9 +216,9 @@ dump_global_data(FILE *fp, data_t * data)
 #ifdef _WITH_VRRP_
 	buf[0] = '\0';
 	if (global_data->vrrp_rx_bufs_policy & RX_BUFS_POLICY_MTU)
-		strcpy(buf, " rx_bufs_policy = MTU");
+		strcpy_s(buf, sizeof(buf), " rx_bufs_policy = MTU");
 	else if (global_data->vrrp_rx_bufs_policy & RX_BUFS_POLICY_ADVERT)
-		strcpy(buf, " rx_bufs_policy = ADVERT");
+		strcpy_s(buf, sizeof(buf), " rx_bufs_policy = ADVERT");
 	else if (global_data->vrrp_rx_bufs_policy & RX_BUFS_SIZE)
 		sprintf(buf, " rx_bufs_size = %lu", global_data->vrrp_rx_bufs_size);
 	if (buf[0])

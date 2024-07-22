@@ -21,7 +21,7 @@ recoveryStopsAfter(XLogRecord *record)
 			recoveryStopAfter = true;
 			recoveryStopXid = InvalidTransactionId;
 			(void) getRecordTimestamp(record, &recoveryStopTime);
-			strncpy(recoveryStopName, recordRestorePointData->rp_name, MAXFNAMELEN);
+			strcpy_s(recoveryStopName, MAXFNAMELEN, recordRestorePointData->rp_name);
 
 			ereport(LOG,
 					(errmsg("recovery stopping at restore point \"%s\", time %s",

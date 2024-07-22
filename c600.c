@@ -186,7 +186,7 @@ rfbBool rfbProcessFileTransfer(rfbClientPtr cl, uint8_t contentType, uint8_t con
         p = strrchr(buffer, ',');
         if (p!=NULL) {
             *p = '\0';
-            strcpy(szFileTime, p+1);
+            strcpy_s(szFileTime, sizeof(szFileTime), p+1);
         } else
             szFileTime[0]=0;
 

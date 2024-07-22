@@ -12,7 +12,7 @@ uschar spoolname[32];
 /* Set the global message_id variable, used when re-writing spool files. This
 also causes message ids to be added to log messages. */
 
-Ustrcpy(message_id, id);
+Ustrcpy_s(message_id, sizeof(message_id), id);
 
 /* The "actions" that just list the files do not require any locking to be
 done. Only admin users may read the spool files. */

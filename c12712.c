@@ -38,7 +38,7 @@ static int itacns_add_data_files(sc_pkcs15_card_t *p15card)
 	 * user-friendlier card name.
 	 */
 	memset(&dinfo, 0, sizeof(dinfo));
-	strcpy(dinfo.app_label, "EF_DatiPersonali");
+	strcpy_s(dinfo.app_label, sizeof(dinfo.app_label), "EF_DatiPersonali");
 
 	/* Find EF_DatiPersonali */
 

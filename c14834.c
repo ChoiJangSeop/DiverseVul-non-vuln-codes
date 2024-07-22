@@ -61,18 +61,18 @@ GF_Filter *gf_fs_load_filter(GF_FilterSession *fsess, const char *name, GF_Err *
 		if (len>GF_MAX_PATH)
 			return NULL;
 
-		strncpy(szPath, name, len);
+		strcpy_s(szPath, len, name);
 		szPath[len]=0;
 		GF_LOG(GF_LOG_DEBUG, GF_LOG_FILTER, ("Trying JS filter %s\n", szPath));
 		if (gf_file_exists(szPath)) {
 			file_exists = GF_TRUE;
 		} else {
-			strcpy(szName, szPath);
+			strcpy_s(szName, sizeof(szName), szPath);
 			file_exists = gf_fs_solve_js_script(szPath, szName, file_ext);
 			if (!file_exists && !file_ext) {
 				strcat(szName, ".js");
 				if (gf_file_exists(szName)) {
-					strncpy(szPath, name, len);
+					strcpy_s(szPath, len, name);
 					szPath[len]=0;
 					strcat(szPath, ".js");
 					file_exists = GF_TRUE;

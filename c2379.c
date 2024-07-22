@@ -35,9 +35,9 @@ NUM_numpart_to_char(NUMProc *Np, int id)
 			if (Np->Num->lsign == NUM_LSIGN_PRE)
 			{
 				if (Np->sign == '-')
-					strcpy(Np->inout_p, Np->L_negative_sign);
+					strcpy_s(Np->inout_p, sizeof(Np->inout_p), Np->L_negative_sign);
 				else
-					strcpy(Np->inout_p, Np->L_positive_sign);
+					strcpy_s(Np->inout_p, sizeof(Np->inout_p), Np->L_positive_sign);
 				Np->inout_p += strlen(Np->inout_p);
 				Np->sign_wrote = TRUE;
 			}
@@ -103,7 +103,7 @@ NUM_numpart_to_char(NUMProc *Np, int id)
 			{
 				if (!Np->last_relevant || *Np->last_relevant != '.')
 				{
-					strcpy(Np->inout_p, Np->decimal);	/* Write DEC/D */
+					strcpy_s(Np->inout_p, sizeof(Np->inout_p), Np->decimal);	/* Write DEC/D */
 					Np->inout_p += strlen(Np->inout_p);
 				}
 
@@ -113,7 +113,7 @@ NUM_numpart_to_char(NUMProc *Np, int id)
 				else if (IS_FILLMODE(Np->Num) &&
 						 Np->last_relevant && *Np->last_relevant == '.')
 				{
-					strcpy(Np->inout_p, Np->decimal);	/* Write DEC/D */
+					strcpy_s(Np->inout_p, sizeof(Np->inout_p), Np->decimal);	/* Write DEC/D */
 					Np->inout_p += strlen(Np->inout_p);
 				}
 			}
@@ -171,9 +171,9 @@ NUM_numpart_to_char(NUMProc *Np, int id)
 			else if (IS_LSIGN(Np->Num) && Np->Num->lsign == NUM_LSIGN_POST)
 			{
 				if (Np->sign == '-')
-					strcpy(Np->inout_p, Np->L_negative_sign);
+					strcpy_s(Np->inout_p, sizeof(Np->inout_p), Np->L_negative_sign);
 				else
-					strcpy(Np->inout_p, Np->L_positive_sign);
+					strcpy_s(Np->inout_p, sizeof(Np->inout_p), Np->L_positive_sign);
 				Np->inout_p += strlen(Np->inout_p);
 			}
 		}

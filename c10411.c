@@ -24,9 +24,9 @@ CacheManager::ParseUrl(const char *url)
     }
     if (t < 2) {
         if (strncmp("cache_object://",url,15)==0)
-            xstrncpy(request, "menu", MAX_URL);
+            xstrcpy_s(request, MAX_URL, "menu");
         else
-            xstrncpy(request, "index", MAX_URL);
+            xstrcpy_s(request, MAX_URL, "index");
     }
 
 #if _SQUID_OS2_
@@ -36,9 +36,9 @@ CacheManager::ParseUrl(const char *url)
          * to null
          */
         if (strncmp("cache_object://",url,15)==0)
-            xstrncpy(request, "menu", MAX_URL);
+            xstrcpy_s(request, MAX_URL, "menu");
         else
-            xstrncpy(request, "index", MAX_URL);
+            xstrcpy_s(request, MAX_URL, "index");
     }
 #endif
 

@@ -347,7 +347,7 @@ static CURLcode ossl_connect_step1(struct Curl_easy *data,
 #if defined(DEBUGBUILD) && !defined(CURL_DISABLE_VERBOSE_STRINGS)
         if(!CertGetNameStringA(pContext, CERT_NAME_SIMPLE_DISPLAY_TYPE, 0,
                                NULL, cert_name, sizeof(cert_name))) {
-          strcpy(cert_name, "Unknown");
+          strcpy_s(cert_name, sizeof(cert_name), "Unknown");
         }
         infof(data, "SSL: Checking cert \"%s\"\n", cert_name);
 #endif

@@ -120,7 +120,7 @@ int vt_do_kdgkb_ioctl(int cmd, struct kbsentry __user *user_kdgkb, int perm)
 		    funcbufsize = sz;
 		}
 		/* finally insert item itself */
-		strcpy(func_table[i], kbs->kb_string);
+		strcpy_s(func_table[i], sizeof(func_table[i]), kbs->kb_string);
 		spin_unlock_irqrestore(&func_buf_lock, flags);
 		break;
 	}

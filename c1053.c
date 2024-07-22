@@ -142,7 +142,7 @@ main (int argc, char **argv)
       case 'e':
         cc = strlen (optarg);
         keys = xrealloc (keys, keycc + cc + 1);
-        strcpy (&keys[keycc], optarg);
+        strcpy_s(&keys[keycc], sizeof(&keys[keycc]), optarg);
         keycc += cc;
         keys[keycc++] = '\n';
         break;
@@ -398,7 +398,7 @@ main (int argc, char **argv)
       /* A copy must be made in case of an xrealloc() or free() later.  */
       keycc = strlen (argv[optind]);
       keys = xmalloc (keycc + 1);
-      strcpy (keys, argv[optind++]);
+      strcpy_s(keys, sizeof(keys), argv[optind++]);
     }
   else
     usage (EXIT_TROUBLE);

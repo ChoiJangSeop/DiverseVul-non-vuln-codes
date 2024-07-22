@@ -13,7 +13,7 @@ static int check_options(int argc, char **argv, char *operation)
   const char *plugin_dir_prefix = "--plugin_dir=";
   int plugin_dir_len= strlen(plugin_dir_prefix);
 
-  strcpy(plugin_name, "");
+  strcpy_s(plugin_name, sizeof(plugin_name), "");
   for (i = 0; i < argc && num_found < 5; i++)
   {
 
@@ -24,7 +24,7 @@ static int check_options(int argc, char **argv, char *operation)
     if ((strcasecmp(argv[i], "ENABLE") == 0) ||
         (strcasecmp(argv[i], "DISABLE") == 0))
     {
-      strcpy(operation, argv[i]);
+      strcpy_s(operation, sizeof(operation), argv[i]);
       num_found++;
     }
     else if ((strncasecmp(argv[i], basedir_prefix, basedir_len) == 0) &&
@@ -51,8 +51,8 @@ static int check_options(int argc, char **argv, char *operation)
     /* read the plugin config file and check for match against argument */
     else
     {
-      strcpy(plugin_name, argv[i]);
-      strcpy(config_file, argv[i]);
+      strcpy_s(plugin_name, sizeof(plugin_name), argv[i]);
+      strcpy_s(config_file, sizeof(config_file), argv[i]);
       strcat(config_file, ".ini");
     }
   }

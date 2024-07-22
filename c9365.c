@@ -12,7 +12,7 @@ write_coefs_to_file(int valid,time_t ref_time,double offset,double rate)
     return RTC_ST_BADFILE;
   }
 
-  strcpy(temp_coefs_file_name,coefs_file_name);
+  strcpy_s(temp_coefs_file_name, sizeof(temp_coefs_file_name), coefs_file_name);
   strcat(temp_coefs_file_name,".tmp");
 
   out = fopen(temp_coefs_file_name, "w");

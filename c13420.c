@@ -108,7 +108,7 @@ CollationCreate(const char *collname, Oid collnamespace,
 	/* form a tuple */
 	memset(nulls, 0, sizeof(nulls));
 
-	namestrcpy(&name_name, collname);
+	namestrcpy_s(&name_name, sizeof(&name_name), collname);
 	oid = GetNewOidWithIndex(rel, CollationOidIndexId,
 							 Anum_pg_collation_oid);
 	values[Anum_pg_collation_oid - 1] = ObjectIdGetDatum(oid);
@@ -118,9 +118,9 @@ CollationCreate(const char *collname, Oid collnamespace,
 	values[Anum_pg_collation_collprovider - 1] = CharGetDatum(collprovider);
 	values[Anum_pg_collation_collisdeterministic - 1] = BoolGetDatum(collisdeterministic);
 	values[Anum_pg_collation_collencoding - 1] = Int32GetDatum(collencoding);
-	namestrcpy(&name_collate, collcollate);
+	namestrcpy_s(&name_collate, sizeof(&name_collate), collcollate);
 	values[Anum_pg_collation_collcollate - 1] = NameGetDatum(&name_collate);
-	namestrcpy(&name_ctype, collctype);
+	namestrcpy_s(&name_ctype, sizeof(&name_ctype), collctype);
 	values[Anum_pg_collation_collctype - 1] = NameGetDatum(&name_ctype);
 	if (collversion)
 		values[Anum_pg_collation_collversion - 1] = CStringGetTextDatum(collversion);

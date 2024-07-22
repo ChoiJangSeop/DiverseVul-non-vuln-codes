@@ -44,7 +44,7 @@ stringprep (char *in,
       return STRINGPREP_TOO_SMALL_BUFFER;
     }
 
-  strcpy (in, utf8);		/* flawfinder: ignore */
+  strcpy_s(in, sizeof(in), utf8);		/* flawfinder: ignore */
 
   free (utf8);
 

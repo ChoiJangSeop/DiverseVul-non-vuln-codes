@@ -8,7 +8,7 @@ static int dd_lock(struct dump_dir *dd, unsigned sleep_usec, int flags)
 
     unsigned dirname_len = strlen(dd->dd_dirname);
     char lock_buf[dirname_len + sizeof("/.lock")];
-    strcpy(lock_buf, dd->dd_dirname);
+    strcpy_s(lock_buf, sizeof(lock_buf), dd->dd_dirname);
     strcpy(lock_buf + dirname_len, "/.lock");
 
     unsigned count = NO_TIME_FILE_COUNT;

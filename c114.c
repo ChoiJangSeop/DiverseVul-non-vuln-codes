@@ -16,7 +16,7 @@ static int grep_tree(struct grep_opt *opt, const char **paths,
 	}
 	else {
 		down = path_buf;
-		strcpy(down, base);
+		strcpy_s(down, sizeof(down), base);
 	}
 	len = strlen(path_buf);
 

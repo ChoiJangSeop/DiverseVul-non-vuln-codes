@@ -120,7 +120,7 @@ static int directblockRead(struct READER *reader, struct DATAOBJECT *dataobject,
 					free(name);
 					return MYSOFA_NO_MEMORY;
 				}
-				strcpy(value, "");
+				strcpy_s(value, sizeof(value), "");
 			} else {
 				log("FHDB type 3 unsupported values: %12" PRIX64 "\n",unknown);
 				free(name);

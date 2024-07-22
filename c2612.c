@@ -72,7 +72,7 @@ static int create_problem_dir(GHashTable *problem_info, unsigned pid)
      */
     char *newpath = xstrndup(path, strlen(path) - strlen(".new"));
     if (rename(path, newpath) == 0)
-        strcpy(path, newpath);
+        strcpy_s(path, sizeof(path), newpath);
     free(newpath);
 
     log_notice("Saved problem directory of pid %u to '%s'", pid, path);

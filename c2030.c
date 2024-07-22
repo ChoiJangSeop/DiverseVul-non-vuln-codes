@@ -1938,7 +1938,7 @@ while (*s != 0)
           goto EXPAND_FAILED;
           }
         t = store_get_perm(sizeof(tree_node) + Ustrlen(argv[0]));
-        Ustrcpy(t->name, argv[0]);
+        Ustrcpy_s(t->name, sizeof(t->name), argv[0]);
         t->data.ptr = handle;
         (void)tree_insertnode(&dlobj_anchor, t);
         }

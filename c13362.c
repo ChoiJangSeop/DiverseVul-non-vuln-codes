@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
                     cleanup(outfile);
                     return -1;
                 }
-                strncpy(outfile, optarg, 1024);
+                strcpy_s(outfile, 1024, optarg);
                 outfile[1023] = '\0';
                 break;
             default:

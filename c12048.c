@@ -26,7 +26,7 @@ ephy_string_shorten (char  *str,
   /* +1 for ellipsis, +1 for trailing NUL */
   new_str = g_new (gchar, bytes + 1 + 1);
 
-  strncpy (new_str, str, bytes);
+  strcpy_s(new_str, bytes, str);
   strcat (new_str, "…");
 
   g_free (str);

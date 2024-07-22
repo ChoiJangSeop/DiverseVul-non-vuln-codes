@@ -30,9 +30,9 @@ mptctl_readtest (unsigned long arg)
 #else
 	karg.chip_type = ioc->pcidev->device;
 #endif
-	strncpy (karg.name, ioc->name, MPT_MAX_NAME);
+	strcpy_s(karg.name, MPT_MAX_NAME, ioc->name);
 	karg.name[MPT_MAX_NAME-1]='\0';
-	strncpy (karg.product, ioc->prod_name, MPT_PRODUCT_LENGTH);
+	strcpy_s(karg.product, MPT_PRODUCT_LENGTH, ioc->prod_name);
 	karg.product[MPT_PRODUCT_LENGTH-1]='\0';
 
 	/* Copy the data from kernel memory to user memory

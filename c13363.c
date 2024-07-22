@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
     else
     {
         /* What is the filename for the key file? */
-        strncpy(outfile, argv[optind++], 1024);
+        strcpy_s(outfile, 1024, argv[optind++]);
         outfile[1023] = '\0';
     }
 

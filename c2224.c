@@ -50,7 +50,7 @@ void gps_tracker( void )
     	if (is_json) {
 			// Send ?WATCH={"json":true};
 			memset( line, 0, sizeof( line ) );
-			strcpy(line, "?WATCH={\"json\":true};\n");
+			strcpy_s(line, sizeof(line), "?WATCH={\"json\":true};\n");
 			if( send( gpsd_sock, line, 22, 0 ) != 22 )
 				return;
 

@@ -32,7 +32,7 @@ void CLASS parse_rollei()
   t.tm_mon -= 1;
   if (mktime(&t) > 0)
     timestamp = mktime(&t);
-  strcpy(make, "Rollei");
-  strcpy(model, "d530flex");
+  strcpy_s(make, sizeof(make), "Rollei");
+  strcpy_s(model, sizeof(model), "d530flex");
   write_thumb = &CLASS rollei_thumb;
 }

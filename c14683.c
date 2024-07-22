@@ -10,17 +10,17 @@ void jslTokenAsString(int token, char *str, size_t len) {
   }
 
   switch (token) {
-  case LEX_EOF : strncpy(str, "EOF", len); return;
-  case LEX_ID : strncpy(str, "ID", len); return;
-  case LEX_INT : strncpy(str, "INT", len); return;
-  case LEX_FLOAT : strncpy(str, "FLOAT", len); return;
-  case LEX_STR : strncpy(str, "STRING", len); return;
-  case LEX_UNFINISHED_STR : strncpy(str, "UNFINISHED STRING", len); return;
-  case LEX_TEMPLATE_LITERAL : strncpy(str, "TEMPLATE LITERAL", len); return;
-  case LEX_UNFINISHED_TEMPLATE_LITERAL : strncpy(str, "UNFINISHED TEMPLATE LITERAL", len); return;
-  case LEX_REGEX : strncpy(str, "REGEX", len); return;
-  case LEX_UNFINISHED_REGEX : strncpy(str, "UNFINISHED REGEX", len); return;
-  case LEX_UNFINISHED_COMMENT : strncpy(str, "UNFINISHED COMMENT", len); return;
+  case LEX_EOF : strcpy_s(str, len, "EOF"); return;
+  case LEX_ID : strcpy_s(str, len, "ID"); return;
+  case LEX_INT : strcpy_s(str, len, "INT"); return;
+  case LEX_FLOAT : strcpy_s(str, len, "FLOAT"); return;
+  case LEX_STR : strcpy_s(str, len, "STRING"); return;
+  case LEX_UNFINISHED_STR : strcpy_s(str, len, "UNFINISHED STRING"); return;
+  case LEX_TEMPLATE_LITERAL : strcpy_s(str, len, "TEMPLATE LITERAL"); return;
+  case LEX_UNFINISHED_TEMPLATE_LITERAL : strcpy_s(str, len, "UNFINISHED TEMPLATE LITERAL"); return;
+  case LEX_REGEX : strcpy_s(str, len, "REGEX"); return;
+  case LEX_UNFINISHED_REGEX : strcpy_s(str, len, "UNFINISHED REGEX"); return;
+  case LEX_UNFINISHED_COMMENT : strcpy_s(str, len, "UNFINISHED COMMENT"); return;
   }
   if (token>=_LEX_OPERATOR_START && token<_LEX_R_LIST_END) {
     const char tokenNames[] =
@@ -95,12 +95,12 @@ void jslTokenAsString(int token, char *str, size_t len) {
       n--; // next token
     }
     assert(n==0);
-    strncpy(str, &tokenNames[p], len);
+    strcpy_s(str, len, &tokenNames[p]);
     return;
   }
 
   assert(len>=10);
-  strncpy(str, "?[",len);
+  strcpy_s(str, len, "?[");
   itostr(token, &str[2], 10);
   strncat(str, "]",len);
 }

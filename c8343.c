@@ -24,7 +24,7 @@ make_canonical(struct ly_ctx *ctx, int type, const char **value, void *data1, vo
             if (buf[0]) {
                 sprintf(buf + strlen(buf), " %s", bits[i]->name);
             } else {
-                strcpy(buf, bits[i]->name);
+                strcpy_s(buf, sizeof(buf), bits[i]->name);
             }
         }
         break;
@@ -35,7 +35,7 @@ make_canonical(struct ly_ctx *ctx, int type, const char **value, void *data1, vo
         if (!strchr(*value, ':')) {
             sprintf(buf, "%s:%s", module_name, *value);
         } else {
-            strcpy(buf, *value);
+            strcpy_s(buf, sizeof(buf), *value);
         }
         break;
 
@@ -71,7 +71,7 @@ make_canonical(struct ly_ctx *ctx, int type, const char **value, void *data1, vo
                         lyxp_expr_free(exp);
                         return 0;
                     }
-                    strncpy(&buf[count], cur_expr, j);
+                    strcpy_s(&buf[count], j, cur_expr);
                     count += j;
                 }
                 module_name = cur_expr;
@@ -90,7 +90,7 @@ make_canonical(struct ly_ctx *ctx, int type, const char **value, void *data1, vo
                     lyxp_expr_free(exp);
                     return 0;
                 }
-                strncpy(&buf[count], &exp->expr[exp->expr_pos[i]], exp->tok_len[i]);
+                strcpy_s(&buf[count], exp->tok_len[i], &exp->expr[exp->expr_pos[i]]);
                 count += exp->tok_len[i];
             }
         }

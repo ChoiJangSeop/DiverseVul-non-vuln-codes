@@ -24,7 +24,7 @@ int diskutil_loop(const char *path, const long long offset, char *lodev, int lod
             }
 
             if (strstr(output, "/dev/loop")) {
-                strncpy(lodev, output, lodev_size);
+                strcpy_s(lodev, lodev_size, output);
                 if ((ptr = strrchr(lodev, '\n')) != NULL) {
                     *ptr = '\0';
                     found = TRUE;

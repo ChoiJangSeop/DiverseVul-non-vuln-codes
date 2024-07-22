@@ -22,7 +22,7 @@ char *enl_ipc_get(const char *msg_data)
 	} else {
 		len = blen;
 		message = (char *) emalloc(len + 1);
-		strcpy(message, buff);
+		strcpy_s(message, sizeof(message), buff);
 	}
 	if (blen < 12) {
 		ret_msg = message;

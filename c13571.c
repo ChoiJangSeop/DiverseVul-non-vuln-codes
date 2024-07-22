@@ -12,8 +12,8 @@ void ProcessGpsInfo(unsigned char * DirStart, unsigned char * OffsetBase, unsign
     }
 
     ImageInfo.GpsInfoPresent = TRUE;
-    strcpy(ImageInfo.GpsLat, "? ?");
-    strcpy(ImageInfo.GpsLong, "? ?");
+    strcpy_s(ImageInfo.GpsLat, sizeof(ImageInfo.GpsLat), "? ?");
+    strcpy_s(ImageInfo.GpsLong, sizeof(ImageInfo.GpsLong), "? ?");
     ImageInfo.GpsAlt[0] = 0; 
 
     for (de=0;de<NumDirEntries;de++){
@@ -82,7 +82,7 @@ void ProcessGpsInfo(unsigned char * DirStart, unsigned char * OffsetBase, unsign
                 if (Format != FMT_URATIONAL){
                     ErrNonfatal("Inappropriate format (%d) for Exif GPS coordinates!", Format, 0);
                 }
-                strcpy(FmtString, "%0.0fd %0.0fm %0.0fs");
+                strcpy_s(FmtString, sizeof(FmtString), "%0.0fd %0.0fm %0.0fs");
                 for (a=0;a<3;a++){
                     int den, digits;
 
@@ -102,9 +102,9 @@ void ProcessGpsInfo(unsigned char * DirStart, unsigned char * OffsetBase, unsign
                 snprintf(TempString, sizeof(TempString), FmtString, Values[0], Values[1], Values[2]);
 
                 if (Tag == TAG_GPS_LAT){
-                    strncpy(ImageInfo.GpsLat+2, TempString, 29);
+                    strcpy_s(ImageInfo.GpsLat+2, 29, TempString);
                 }else{
-                    strncpy(ImageInfo.GpsLong+2, TempString, 29);
+                    strcpy_s(ImageInfo.GpsLong+2, 29, TempString);
                 }
                 break;
 

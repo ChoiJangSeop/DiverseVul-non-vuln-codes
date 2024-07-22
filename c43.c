@@ -89,7 +89,7 @@ isdn_net_setcfg(isdn_net_ioctl_cfg * cfg)
 
 			drvidx = -1;
 			chidx = -1;
-			strcpy(drvid, cfg->drvid);
+			strcpy_s(drvid, sizeof(drvid), cfg->drvid);
 			if ((c = strchr(drvid, ','))) {
 				/* The channel-number is appended to the driver-Id with a comma */
 				chidx = (int) simple_strtoul(c + 1, &e, 10);
@@ -139,7 +139,7 @@ isdn_net_setcfg(isdn_net_ioctl_cfg * cfg)
 				chidx = -1;
 			}
 		}
-		strcpy(lp->msn, cfg->eaz);
+		strcpy_s(lp->msn, sizeof(lp->msn), cfg->eaz);
 		lp->pre_device = drvidx;
 		lp->pre_channel = chidx;
 		lp->onhtime = cfg->onhtime;

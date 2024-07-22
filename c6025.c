@@ -268,7 +268,7 @@ finish:
 	if (!scratch) {
 		scratch_len = strlen(path) + 29 + protocol_version_len;
 		scratch = emalloc(scratch_len);
-		strncpy(scratch, "GET ", scratch_len);
+		strcpy_s(scratch, scratch_len, "GET ");
 	}
 
 	/* Should we send the entire path in the request line, default to no. */
@@ -426,7 +426,7 @@ finish:
 		php_url_decode(resource->user, strlen(resource->user));
 
 		/* scratch is large enough, since it was made large enough for the whole URL */
-		strcpy(scratch, resource->user);
+		strcpy_s(scratch, sizeof(scratch), resource->user);
 		strcat(scratch, ":");
 
 		/* Note: password is optional! */

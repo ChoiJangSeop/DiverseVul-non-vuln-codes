@@ -14,7 +14,7 @@ static void make_device(char *device_name, char *path, int operation)
 	if (operation == OP_add) {
 		char *dev_maj_min = path + strlen(path);
 
-		strcpy(dev_maj_min, "/dev");
+		strcpy_s(dev_maj_min, sizeof(dev_maj_min), "/dev");
 		len = open_read_close(path, dev_maj_min + 1, 64);
 		*dev_maj_min = '\0';
 		if (len < 1) {

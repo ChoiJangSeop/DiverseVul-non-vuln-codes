@@ -443,7 +443,7 @@ int CLASS parse_tiff_ifd(int base)
       tiff_ifd[ifd].sample_format = getint(type);
       break;
     case 400:
-      strcpy(make, "Sarnoff");
+      strcpy_s(make, sizeof(make), "Sarnoff");
       maximum = 0xfff;
       break;
 #ifdef LIBRAW_LIBRARY_BUILD
@@ -617,7 +617,7 @@ int CLASS parse_tiff_ifd(int base)
     case 34310: /* Leaf metadata */
       parse_mos(ftell(ifp));
     case 34303:
-      strcpy(make, "Leaf");
+      strcpy_s(make, sizeof(make), "Leaf");
       break;
     case 34665: /* EXIF tag */
       fseek(ifp, get4() + base, SEEK_SET);
@@ -671,7 +671,7 @@ int CLASS parse_tiff_ifd(int base)
       }
       break;
     case 46275: /* Imacon tags */
-      strcpy(make, "Imacon");
+      strcpy_s(make, sizeof(make), "Imacon");
       data_offset = ftell(ifp);
       ima_len = len;
       break;
@@ -740,7 +740,7 @@ int CLASS parse_tiff_ifd(int base)
       break;
     case 50458:
       if (!make[0])
-        strcpy(make, "Hasselblad");
+        strcpy_s(make, sizeof(make), "Hasselblad");
       break;
     case 50459: /* Hasselblad tag */
 #ifdef LIBRAW_LIBRARY_BUILD
@@ -759,7 +759,7 @@ int CLASS parse_tiff_ifd(int base)
     case 50706: /* DNGVersion */
       FORC4 dng_version = (dng_version << 8) + fgetc(ifp);
       if (!make[0])
-        strcpy(make, "DNG");
+        strcpy_s(make, sizeof(make), "DNG");
       is_raw = 1;
       break;
     case 50708: /* UniqueCameraModel */

@@ -130,7 +130,7 @@ init_om(
 	}
 
 	for ( ; count-- > 0; data++) {
-	    strcpy(bufptr, data->font_data->name);
+	    strcpy_s(bufptr, sizeof(bufptr), data->font_data->name);
 	    *required_list++ = bufptr;
 	    bufptr += strlen(bufptr) + 1;
 	}

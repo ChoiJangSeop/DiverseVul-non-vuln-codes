@@ -86,7 +86,7 @@ am_cache_entry_t *am_cache_new(server_rec *s, const char *key)
      * it and returns it.
      */
 
-    strcpy(t->key, key);
+    strcpy_s(t->key, sizeof(t->key), key);
 
     /* Far far into the future. */
     t->expires = 0x7fffffffffffffffLL;

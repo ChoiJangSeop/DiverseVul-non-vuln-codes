@@ -23,9 +23,9 @@ static GF_Err nhmldmx_send_sample(GF_Filter *filter, GF_NHMLDmxCtx *ctx)
 		if (node->type) continue;
 		if (stricmp(node->name, ctx->is_dims ? "DIMSUnit" : "NHNTSample") ) continue;
 
-		strcpy(szMediaTemp, "");
-		strcpy(szXmlFrom, "");
-		strcpy(szXmlTo, "");
+		strcpy_s(szMediaTemp, sizeof(szMediaTemp), "");
+		strcpy_s(szXmlFrom, sizeof(szXmlFrom), "");
+		strcpy_s(szXmlTo, sizeof(szXmlTo), "");
 
 		/*by default handle all samples as contiguous*/
 		ctx->samp_buffer_size = 0;
@@ -78,8 +78,8 @@ static GF_Err nhmldmx_send_sample(GF_Filter *filter, GF_NHMLDmxCtx *ctx)
 					if (url) gf_free(url);
 				}
 			}
-			else if (!stricmp(att->name, "xmlFrom")) strcpy(szXmlFrom, att->value);
-			else if (!stricmp(att->name, "xmlTo")) strcpy(szXmlTo, att->value);
+			else if (!stricmp(att->name, "xmlFrom")) strcpy_s(szXmlFrom, sizeof(szXmlFrom), att->value);
+			else if (!stricmp(att->name, "xmlTo")) strcpy_s(szXmlTo, sizeof(szXmlTo), att->value);
 			/*DIMS flags*/
 			else if (!stricmp(att->name, "is-Scene") && !stricmp(att->value, "yes"))
 				dims_flags |= GF_DIMS_UNIT_S;

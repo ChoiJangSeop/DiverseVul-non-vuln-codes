@@ -12,7 +12,7 @@ connection_struct *make_connection_snum(struct smbd_server_connection *sconn,
 	bool on_err_call_dis_hook = false;
 	NTSTATUS status;
 
-	fstrcpy(dev, pdev);
+	fstrcpy_s(dev, sizeof(dev), pdev);
 
 	if (NT_STATUS_IS_ERR(*pstatus = share_sanity_checks(snum, dev))) {
 		return NULL;

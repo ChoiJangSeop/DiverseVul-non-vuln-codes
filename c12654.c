@@ -147,7 +147,7 @@ static void cryptinfo_node_start(void *sax_cbck, const char *node_name, const ch
 				}
 			}
 			else if (!stricmp(att->name, "transactionID")) {
-				if (strlen(att->value)<=16) strcpy(tkc->TransactionID, att->value);
+				if (strlen(att->value)<=16) strcpy_s(tkc->TransactionID, sizeof(tkc->TransactionID), att->value);
 			}
 			else if (!stricmp(att->name, "textualHeaders")) {
 			}

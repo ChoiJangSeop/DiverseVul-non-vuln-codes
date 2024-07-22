@@ -319,7 +319,7 @@ try_again:
 						snprintf(nc, sizeof(nc), "%08ld", Z_LVAL_PP(tmp));
 					} else {
 						add_assoc_long(*digest, "nc", 1);
-						strcpy(nc, "00000001");
+						strcpy_s(nc, sizeof(nc), "00000001");
 					}
 
 					PHP_MD5Init(&md5ctx);

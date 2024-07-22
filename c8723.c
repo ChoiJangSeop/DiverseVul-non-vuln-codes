@@ -52,7 +52,7 @@ parsetok(struct tok_state *tok, grammar *g, int start, perrdetail *err_ret,
             break;
         }
         if (len > 0)
-            strncpy(str, a, len);
+            strcpy_s(str, len, a);
         str[len] = '\0';
 
 #ifdef PY_PARSER_REQUIRES_FUTURE_KEYWORD
@@ -163,7 +163,7 @@ parsetok(struct tok_state *tok, grammar *g, int start, perrdetail *err_ret,
             err_ret->text = (char *) PyObject_MALLOC(len + 1);
             if (err_ret->text != NULL) {
                 if (len > 0)
-                    strncpy(err_ret->text, tok->buf, len);
+                    strcpy_s(err_ret->text, len, tok->buf);
                 err_ret->text[len] = '\0';
             }
         }
@@ -181,7 +181,7 @@ parsetok(struct tok_state *tok, grammar *g, int start, perrdetail *err_ret,
             n = NULL;
             goto done;
         }
-        strcpy(r->n_str, tok->encoding);
+        strcpy_s(r->n_str, sizeof(r->n_str), tok->encoding);
         PyMem_FREE(tok->encoding);
         tok->encoding = NULL;
         r->n_nchildren = 1;

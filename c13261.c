@@ -151,7 +151,7 @@ struct symbol_t* MACH0_(get_symbols)(struct MACH0_(obj_t)* bin) {
 			} else {
 				symbols[j].type = R_BIN_MACH0_SYMBOL_TYPE_LOCAL;
 			}
-			strncpy (symbols[j].name, symstr, R_BIN_MACH0_STRING_LENGTH);
+			strcpy_s(symbols[j].name, R_BIN_MACH0_STRING_LENGTH, symstr);
 			symbols[j].name[R_BIN_MACH0_STRING_LENGTH - 1] = 0;
 			symbols[j].last = 0;
 			if (inSymtab (hash, symbols, symbols[j].name, symbols[j].addr)) {

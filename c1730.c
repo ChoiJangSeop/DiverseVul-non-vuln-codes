@@ -436,7 +436,7 @@ CreateTrigger(CreateTrigStmt *stmt, const char *queryString,
 					*d++ = '\\';
 				*d++ = *s++;
 			}
-			strcpy(d, "\\000");
+			strcpy_s(d, sizeof(d), "\\000");
 		}
 		values[Anum_pg_trigger_tgnargs - 1] = Int16GetDatum(nargs);
 		values[Anum_pg_trigger_tgargs - 1] = DirectFunctionCall1(byteain,

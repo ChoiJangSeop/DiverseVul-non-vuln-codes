@@ -146,7 +146,7 @@ build_next (GstRTSPBuilder * builder, GstRTSPMessage * message,
             conn->tstate == TUNNEL_STATE_NONE &&
             gst_rtsp_message_get_header (message, GST_RTSP_HDR_X_SESSIONCOOKIE,
                 &session_cookie, 0) == GST_RTSP_OK) {
-          strncpy (conn->tunnelid, session_cookie, TUNNELID_LEN);
+          strcpy_s(conn->tunnelid, TUNNELID_LEN, session_cookie);
           conn->tunnelid[TUNNELID_LEN - 1] = '\0';
           conn->tunneled = TRUE;
         }
@@ -180,7 +180,7 @@ build_next (GstRTSPBuilder * builder, GstRTSPMessage * message,
 
           /* make sure to not overflow */
           if (conn->remember_session_id) {
-            strncpy (conn->session_id, session_id, maxlen);
+            strcpy_s(conn->session_id, maxlen, session_id);
             conn->session_id[maxlen] = '\0';
           }
         }

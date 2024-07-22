@@ -54,7 +54,7 @@ int fdt_find_regions(const void *fdt, char * const inc[], int inc_count,
 				return -FDT_ERR_NOSPACE;
 			if (end != path + 1)
 				*end++ = '/';
-			strcpy(end, name);
+			strcpy_s(end, sizeof(end), name);
 			end += len;
 			stack[depth] = want;
 			if (want == 1)

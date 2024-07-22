@@ -79,7 +79,7 @@ u32cconv (c, s)
 
   /* number of chars to be copied is optr - obuf if we want to do bounds
      checking */
-  strcpy (s, obuf);
+  strcpy_s(s, sizeof(s), obuf);
   return (optr - obuf);
 #endif
 

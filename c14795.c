@@ -52,7 +52,7 @@ bool initialise_control(rzip_control *control)
 	control->tmpdir = malloc(len + 2);
 	if (control->tmpdir == NULL)
 		fatal_return(("Failed to allocate for tmpdir\n"), false);
-	strcpy(control->tmpdir, eptr);
+	strcpy_s(control->tmpdir, sizeof(control->tmpdir), eptr);
 	if (control->tmpdir[len - 1] != '/') {
 		control->tmpdir[len] = '/'; /* need a trailing slash */
 		control->tmpdir[len + 1] = '\0';

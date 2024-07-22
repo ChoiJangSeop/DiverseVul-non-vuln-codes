@@ -375,7 +375,7 @@ static int parse_cmdline_encoder(int argc, char **argv,
         case 'p': {         /* progression order */
             char progression[4];
 
-            strncpy(progression, opj_optarg, 4);
+            strcpy_s(progression, 4, opj_optarg);
             parameters->prog_order = give_progression(progression);
             if (parameters->prog_order == -1) {
                 fprintf(stderr, "Unrecognized progression order "
@@ -497,7 +497,7 @@ static int parse_cmdline_encoder(int argc, char **argv,
         case 'C': {         /* add a comment */
             parameters->cp_comment = (char*)malloc(strlen(opj_optarg) + 1);
             if (parameters->cp_comment) {
-                strcpy(parameters->cp_comment, opj_optarg);
+                strcpy_s(parameters->cp_comment, sizeof(parameters->cp_comment), opj_optarg);
             }
         }
         break;
@@ -525,7 +525,7 @@ static int parse_cmdline_encoder(int argc, char **argv,
             if (img_fol->imgdirpath == NULL) {
                 return 1;
             }
-            strcpy(img_fol->imgdirpath, opj_optarg);
+            strcpy_s(img_fol->imgdirpath, sizeof(img_fol->imgdirpath), opj_optarg);
             img_fol->set_imgdir = 1;
         }
         break;

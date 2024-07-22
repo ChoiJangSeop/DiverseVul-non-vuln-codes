@@ -20,7 +20,7 @@ static int l2tp_eth_create(struct net *net, u32 tunnel_id, u32 session_id, u32 p
 		strlcpy(name, cfg->ifname, IFNAMSIZ);
 		name_assign_type = NET_NAME_USER;
 	} else {
-		strcpy(name, L2TP_ETH_DEV_NAME);
+		strcpy_s(name, sizeof(name), L2TP_ETH_DEV_NAME);
 		name_assign_type = NET_NAME_ENUM;
 	}
 

@@ -52,7 +52,7 @@ static CURLUcode hostname_check(struct Curl_URL *u, char *hostname)
       /* check if it can be done shorter */
       if(Curl_inet_ntop(AF_INET6, dest, norm, sizeof(norm)) &&
          (strlen(norm) < hlen)) {
-        strcpy(hostname, norm);
+        strcpy_s(hostname, sizeof(hostname), norm);
         hlen = strlen(norm);
         hostname[hlen + 1] = 0;
       }

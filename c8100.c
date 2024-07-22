@@ -38,7 +38,7 @@ static void pcd_init_units(void)
 		cd->info.mask = 0;
 		disk->major = major;
 		disk->first_minor = unit;
-		strcpy(disk->disk_name, cd->name);	/* umm... */
+		strcpy_s(disk->disk_name, sizeof(disk->disk_name), cd->name);	/* umm... */
 		disk->fops = &pcd_bdops;
 		disk->flags = GENHD_FL_BLOCK_EVENTS_ON_EXCL_WRITE;
 	}

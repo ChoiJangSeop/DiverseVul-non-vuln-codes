@@ -59,7 +59,7 @@ getsrv (const char *name,struct srventry **list)
         srv->priority = answer->rrs.srvha[count].priority;
         srv->weight   = answer->rrs.srvha[count].weight;
         srv->port     = answer->rrs.srvha[count].port;
-        strcpy (srv->target, answer->rrs.srvha[count].ha.host);
+        strcpy_s(srv->target, sizeof(srv->target), answer->rrs.srvha[count].ha.host);
       }
 
     adns_free (answer);

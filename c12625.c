@@ -7,8 +7,8 @@ MONGO_EXPORT int mongo_run_command( mongo *conn, const char *db, const bson *com
     char *ns = bson_malloc( sl + 5 + 1 ); /* ".$cmd" + nul */
     int res, success = 0;
 
-    strcpy( ns, db );
-    strcpy( ns+sl, ".$cmd" );
+    strcpy_s(ns, sizeof(ns), db);
+    strcpy_s(ns+sl, sizeof(ns+sl), ".$cmd");
 
     res = mongo_find_one( conn, ns, command, bson_empty( &fields ), &response );
     bson_free( ns );

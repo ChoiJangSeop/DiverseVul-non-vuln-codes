@@ -262,13 +262,13 @@ parse_cmdline(int argc, char **argv)
 #if HAVE_DECL_CLONE_NEWNET
 		case 's':
 			override_namespace = MALLOC(strlen(optarg) + 1);
-			strcpy(override_namespace, optarg);
+			strcpy_s(override_namespace, sizeof(override_namespace), optarg);
 			break;
 #endif
 		case 'i':
 			FREE_PTR(config_id);
 			config_id = MALLOC(strlen(optarg) + 1);
-			strcpy(config_id, optarg);
+			strcpy_s(config_id, sizeof(config_id), optarg);
 			break;
 		case 4:			/* --signum */
 			signum = get_signum(optarg);

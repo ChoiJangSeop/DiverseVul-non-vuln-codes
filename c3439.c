@@ -51,7 +51,7 @@ static int process_options(int argc, char *argv[], char *operation)
    read a configuration file named <plugin_name>.ini from the --plugin-dir
    or --plugin-ini location if the --plugin-ini option presented.
   */
-  strcpy(operation, "");
+  strcpy_s(operation, sizeof(operation), "");
   if ((error = check_options(argc, argv, operation)))
   {
     goto exit;

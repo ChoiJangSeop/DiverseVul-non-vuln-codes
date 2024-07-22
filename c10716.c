@@ -8,7 +8,7 @@ gs_add_outputfile_control_path(gs_memory_t *mem, const char *fname)
     /* Be sure the string copy will fit */
     if (len >= gp_file_name_sizeof)
         return gs_error_rangecheck;
-    strcpy(f, fname);
+    strcpy_s(f, sizeof(f), fname);
     fp = f;
     /* Try to rewrite any %d (or similar) in the string */
     rewrite_percent_specifiers(f);

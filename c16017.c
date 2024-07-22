@@ -109,7 +109,7 @@ static int atl2_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 	INIT_WORK(&adapter->reset_task, atl2_reset_task);
 	INIT_WORK(&adapter->link_chg_task, atl2_link_chg_task);
 
-	strcpy(netdev->name, "eth%d"); /* ?? */
+	strcpy_s(netdev->name, sizeof(netdev->name), "eth%d"); /* ?? */
 	err = register_netdev(netdev);
 	if (err)
 		goto err_register;

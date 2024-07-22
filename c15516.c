@@ -66,12 +66,12 @@ static char *print_object( cJSON *item, int depth, int fmt )
 		if ( fmt )
 			for ( j = 0; j < depth; ++j )
 				*ptr++ = '\t';
-		strcpy( ptr, names[i] );
+		strcpy_s(ptr, sizeof(ptr), names[i]);
 		ptr += strlen( names[i] );
 		*ptr++ = ':';
 		if ( fmt )
 			*ptr++ = '\t';
-		strcpy( ptr, entries[i] );
+		strcpy_s(ptr, sizeof(ptr), entries[i]);
 		ptr += strlen( entries[i] );
 		if ( i != numentries - 1 )
 			*ptr++ = ',';

@@ -3,7 +3,7 @@ static int is_git_directory(const char *suspect)
 	char path[PATH_MAX];
 	size_t len = strlen(suspect);
 
-	strcpy(path, suspect);
+	strcpy_s(path, sizeof(path), suspect);
 	if (getenv(DB_ENVIRONMENT)) {
 		if (access(getenv(DB_ENVIRONMENT), X_OK))
 			return 0;

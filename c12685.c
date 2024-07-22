@@ -77,10 +77,10 @@ glob_vector (pat, dir, flags)
 	}
       else
 	{
-	  strcpy (npat, pat);
+	  strcpy_s(npat, sizeof(npat), pat);
 	  dequote_pathname (npat);
 
-	  strcpy (nextname, dir);
+	  strcpy_s(nextname, sizeof(nextname), dir);
 	  nextname[dirlen++] = '/';
 	  strcpy (nextname + dirlen, npat);
 

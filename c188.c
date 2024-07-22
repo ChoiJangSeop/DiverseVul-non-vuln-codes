@@ -6,6 +6,6 @@ char *jas_strdup(const char *s)
 	if (!(p = jas_malloc(n * sizeof(char)))) {
 		return 0;
 	}
-	strcpy(p, s);
+	strcpy_s(p, sizeof(p), s);
 	return p;
 }

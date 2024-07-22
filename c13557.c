@@ -83,7 +83,7 @@ static int dict_load(const char *fname)
 					path[r + 1] = 0;
 					break;
 				}
-			strcpy(fname1, path);
+			strcpy_s(fname1, sizeof(fname1), path);
 			strcat(fname1, ptr[0]);
 			if (dict_load(fname1))
 				goto out_err;

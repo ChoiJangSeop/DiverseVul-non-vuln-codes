@@ -257,12 +257,12 @@ void CLASS parse_makernote(int base, int uptag)
               year += 1900;
 
             ynum_len = (int)strnlen(words[i], sizeof(imgdata.shootinginfo.InternalBodySerial) - 1) - 18;
-            strncpy(ynum, words[i], ynum_len);
+            strcpy_s(ynum, ynum_len, words[i]);
             ynum[ynum_len] = 0;
             for (int j = 0; ynum[j] && ynum[j + 1] && sscanf(ynum + j, "%2x", &c); j += 2)
               ystr[j / 2] = c;
             ystr[ynum_len / 2 + 1] = 0;
-            strcpy(model2, ystr);
+            strcpy_s(model2, sizeof(model2), ystr);
 
             if (i == 0)
             {
@@ -698,7 +698,7 @@ void CLASS parse_makernote(int base, int uptag)
 
       else if ((tag == 0x1017) && (get2() == 2))
       {
-        strcpy(imgdata.lens.makernotes.Attachment, "Wide-Angle Adapter");
+        strcpy_s(imgdata.lens.makernotes.Attachment, sizeof(imgdata.lens.makernotes.Attachment), "Wide-Angle Adapter");
       }
       else if (tag == 0x1500)
       {
@@ -723,7 +723,7 @@ void CLASS parse_makernote(int base, int uptag)
 
       else if ((tag == 0x1017) && (get2() == 2))
       {
-        strcpy(imgdata.lens.makernotes.Attachment, "Wide-Angle Adapter");
+        strcpy_s(imgdata.lens.makernotes.Attachment, sizeof(imgdata.lens.makernotes.Attachment), "Wide-Angle Adapter");
       }
 
       else if (tag == 0x1500)

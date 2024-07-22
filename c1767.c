@@ -90,8 +90,7 @@ pqParseInput2(PGconn *conn)
 						if (!conn->result)
 							return;
 					}
-					strncpy(conn->result->cmdStatus, conn->workBuffer.data,
-							CMDSTATUS_LEN);
+					strcpy_s(conn->result->cmdStatus, CMDSTATUS_LEN, conn->workBuffer.data);
 					checkXactStatus(conn, conn->workBuffer.data);
 					conn->asyncStatus = PGASYNC_READY;
 					break;

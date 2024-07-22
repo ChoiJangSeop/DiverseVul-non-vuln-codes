@@ -103,7 +103,7 @@ identify_system_timezone(void)
 		if (strcmp(tzname, zonename) == 0)
 		{
 			/* Matched zone */
-			strcpy(localtzname, keyname);
+			strcpy_s(localtzname, sizeof(localtzname), keyname);
 			RegCloseKey(key);
 			break;
 		}
@@ -121,7 +121,7 @@ identify_system_timezone(void)
 		if (strcmp(tzname, zonename) == 0)
 		{
 			/* Matched DST zone */
-			strcpy(localtzname, keyname);
+			strcpy_s(localtzname, sizeof(localtzname), keyname);
 			RegCloseKey(key);
 			break;
 		}

@@ -57,7 +57,7 @@ int len;
 			esp->es_usedpseudo = 1;
 			/* Try to get a pseudonym */
 			if ((fd = open_pn_file(O_RDONLY)) >= 0) {
-				strcpy(rhostname, SRP_PSEUDO_ID);
+				strcpy_s(rhostname, sizeof(rhostname), SRP_PSEUDO_ID);
 				len = read(fd, rhostname + SRP_PSEUDO_LEN,
 				    sizeof (rhostname) - SRP_PSEUDO_LEN);
 				/* XXX NAI unsupported */

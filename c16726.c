@@ -39,64 +39,64 @@ loadImage(TIFF* in, struct image_data *image, struct dump_opts *dump, unsigned c
   switch (input_compression)
     {
     case COMPRESSION_NONE:	/* 1  dump mode */
-	 strcpy (compressionid, "None/dump");
+	 strcpy_s(compressionid, sizeof(compressionid), "None/dump");
          break;         
     case COMPRESSION_CCITTRLE:	  /* 2 CCITT modified Huffman RLE */
-	 strcpy (compressionid, "Huffman RLE");
+	 strcpy_s(compressionid, sizeof(compressionid), "Huffman RLE");
          break;         
     case COMPRESSION_CCITTFAX3:	  /* 3 CCITT Group 3 fax encoding */
-	 strcpy (compressionid, "Group3 Fax");
+	 strcpy_s(compressionid, sizeof(compressionid), "Group3 Fax");
          break;         
     case COMPRESSION_CCITTFAX4:	  /* 4 CCITT Group 4 fax encoding */
-	 strcpy (compressionid, "Group4 Fax");
+	 strcpy_s(compressionid, sizeof(compressionid), "Group4 Fax");
          break;         
     case COMPRESSION_LZW:	  /* 5 Lempel-Ziv  & Welch */
-	 strcpy (compressionid, "LZW");
+	 strcpy_s(compressionid, sizeof(compressionid), "LZW");
          break;         
     case COMPRESSION_OJPEG:	  /* 6 !6.0 JPEG */
-	 strcpy (compressionid, "Old Jpeg");
+	 strcpy_s(compressionid, sizeof(compressionid), "Old Jpeg");
          break;         
     case COMPRESSION_JPEG:	  /* 7 %JPEG DCT compression */
-	 strcpy (compressionid, "New Jpeg");
+	 strcpy_s(compressionid, sizeof(compressionid), "New Jpeg");
          break;         
     case COMPRESSION_NEXT:	  /* 32766 NeXT 2-bit RLE */
-	 strcpy (compressionid, "Next RLE");
+	 strcpy_s(compressionid, sizeof(compressionid), "Next RLE");
          break;         
     case COMPRESSION_CCITTRLEW:   /* 32771 #1 w/ word alignment */
-	 strcpy (compressionid, "CITTRLEW");
+	 strcpy_s(compressionid, sizeof(compressionid), "CITTRLEW");
          break;         
     case COMPRESSION_PACKBITS:	  /* 32773 Macintosh RLE */
-	 strcpy (compressionid, "Mac Packbits");
+	 strcpy_s(compressionid, sizeof(compressionid), "Mac Packbits");
          break;         
     case COMPRESSION_THUNDERSCAN: /* 32809 ThunderScan RLE */
-	 strcpy (compressionid, "Thunderscan");
+	 strcpy_s(compressionid, sizeof(compressionid), "Thunderscan");
          break;         
     case COMPRESSION_IT8CTPAD:	  /* 32895 IT8 CT w/padding */
-	 strcpy (compressionid, "IT8 padded");
+	 strcpy_s(compressionid, sizeof(compressionid), "IT8 padded");
          break;         
     case COMPRESSION_IT8LW:	  /* 32896 IT8 Linework RLE */
-	 strcpy (compressionid, "IT8 RLE");
+	 strcpy_s(compressionid, sizeof(compressionid), "IT8 RLE");
          break;         
     case COMPRESSION_IT8MP:	  /* 32897 IT8 Monochrome picture */
-	 strcpy (compressionid, "IT8 mono");
+	 strcpy_s(compressionid, sizeof(compressionid), "IT8 mono");
          break;         
     case COMPRESSION_IT8BL:	  /* 32898 IT8 Binary line art */
-	 strcpy (compressionid, "IT8 lineart");
+	 strcpy_s(compressionid, sizeof(compressionid), "IT8 lineart");
          break;         
     case COMPRESSION_PIXARFILM:	  /* 32908 Pixar companded 10bit LZW */
-	 strcpy (compressionid, "Pixar 10 bit");
+	 strcpy_s(compressionid, sizeof(compressionid), "Pixar 10 bit");
          break;         
     case COMPRESSION_PIXARLOG:	  /* 32909 Pixar companded 11bit ZIP */
-	 strcpy (compressionid, "Pixar 11bit");
+	 strcpy_s(compressionid, sizeof(compressionid), "Pixar 11bit");
          break;         
     case COMPRESSION_DEFLATE:	  /* 32946 Deflate compression */
-	 strcpy (compressionid, "Deflate");
+	 strcpy_s(compressionid, sizeof(compressionid), "Deflate");
          break;         
     case COMPRESSION_ADOBE_DEFLATE: /* 8 Deflate compression */
-	 strcpy (compressionid, "Adobe deflate");
+	 strcpy_s(compressionid, sizeof(compressionid), "Adobe deflate");
          break;         
     default:
-	 strcpy (compressionid, "None/unknown");
+	 strcpy_s(compressionid, sizeof(compressionid), "None/unknown");
          break;         
     }
   TIFFError("loadImage", "Input compression %s", compressionid);
@@ -119,43 +119,43 @@ loadImage(TIFF* in, struct image_data *image, struct dump_opts *dump, unsigned c
   switch (input_photometric)
     {
     case PHOTOMETRIC_MINISWHITE:
-         strcpy (photometricid, "MinIsWhite");
+         strcpy_s(photometricid, sizeof(photometricid), "MinIsWhite");
          break;
     case PHOTOMETRIC_MINISBLACK:
-         strcpy (photometricid, "MinIsBlack");
+         strcpy_s(photometricid, sizeof(photometricid), "MinIsBlack");
          break;
     case PHOTOMETRIC_RGB:
-         strcpy (photometricid, "RGB");
+         strcpy_s(photometricid, sizeof(photometricid), "RGB");
          break;
     case PHOTOMETRIC_PALETTE:
-         strcpy (photometricid, "Palette");
+         strcpy_s(photometricid, sizeof(photometricid), "Palette");
          break;
     case PHOTOMETRIC_MASK:
-         strcpy (photometricid, "Mask");
+         strcpy_s(photometricid, sizeof(photometricid), "Mask");
          break;
     case PHOTOMETRIC_SEPARATED:
-         strcpy (photometricid, "Separated");
+         strcpy_s(photometricid, sizeof(photometricid), "Separated");
          break;
     case PHOTOMETRIC_YCBCR:
-         strcpy (photometricid, "YCBCR");
+         strcpy_s(photometricid, sizeof(photometricid), "YCBCR");
          break;
     case PHOTOMETRIC_CIELAB:
-         strcpy (photometricid, "CIELab");
+         strcpy_s(photometricid, sizeof(photometricid), "CIELab");
          break;
     case PHOTOMETRIC_ICCLAB:
-         strcpy (photometricid, "ICCLab");
+         strcpy_s(photometricid, sizeof(photometricid), "ICCLab");
          break;
     case PHOTOMETRIC_ITULAB:
-         strcpy (photometricid, "ITULab");
+         strcpy_s(photometricid, sizeof(photometricid), "ITULab");
          break;
     case PHOTOMETRIC_LOGL:
-         strcpy (photometricid, "LogL");
+         strcpy_s(photometricid, sizeof(photometricid), "LogL");
          break;
     case PHOTOMETRIC_LOGLUV:
-         strcpy (photometricid, "LOGLuv");
+         strcpy_s(photometricid, sizeof(photometricid), "LOGLuv");
          break;
     default:
-         strcpy (photometricid, "Unknown");
+         strcpy_s(photometricid, sizeof(photometricid), "Unknown");
          break;
     }
   TIFFError("loadImage", "Input photometric interpretation %s", photometricid);

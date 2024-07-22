@@ -34,13 +34,13 @@ void LibRaw::parse_x3f()
 			  if (!strcmp (name, "ISO"))
 				  imgdata.other.iso_speed = atoi(value);
 			  if (!strcmp (name, "CAMMANUF"))
-				  strcpy (imgdata.idata.make, value);
+				  strcpy_s(imgdata.idata.make, sizeof(imgdata.idata.make), value);
 			  if (!strcmp (name, "CAMMODEL"))
-				  strcpy (imgdata.idata.model, value);
+				  strcpy_s(imgdata.idata.model, sizeof(imgdata.idata.model), value);
 			  if (!strcmp (name, "CAMSERIAL"))
-				  strcpy (imgdata.shootinginfo.BodySerial, value);
+				  strcpy_s(imgdata.shootinginfo.BodySerial, sizeof(imgdata.shootinginfo.BodySerial), value);
 			  if (!strcmp (name, "WB_DESC"))
-				  strcpy (imgdata.color.model2, value);
+				  strcpy_s(imgdata.color.model2, sizeof(imgdata.color.model2), value);
 			  if (!strcmp (name, "TIME"))
 				  imgdata.other.timestamp = atoi(value);
 			  if (!strcmp (name, "SHUTTER"))
@@ -106,7 +106,7 @@ void LibRaw::parse_x3f()
 		  imgdata.idata.is_foveon = 1;
 		  libraw_internal_data.internal_output_params.raw_color=1; // Force adobe coeff
 		  libraw_internal_data.unpacker_data.order = 0x4949;
-		  strcpy (imgdata.idata.make, "SIGMA");
+		  strcpy_s(imgdata.idata.make, sizeof(imgdata.idata.make), "SIGMA");
 #if 1
 		  // Try to find model number in first 2048 bytes;
 		  int pos = libraw_internal_data.internal_data.input->tell();
@@ -128,9 +128,9 @@ void LibRaw::parse_x3f()
 		  else
 #endif
 		  if(imgdata.sizes.raw_width == 6656 ||imgdata.sizes.raw_width == 3328 )
-			strcpy (imgdata.idata.model, "sd Quattro H");
+			strcpy_s(imgdata.idata.model, sizeof(imgdata.idata.model), "sd Quattro H");
 		  else
-			strcpy (imgdata.idata.model, "dp2 Quattro");
+			strcpy_s(imgdata.idata.model, sizeof(imgdata.idata.model), "dp2 Quattro");
 	  }
 	  //else
   }

@@ -8,7 +8,7 @@ void dump_isom_sdp(GF_ISOFile *file, char *inName, Bool is_final_name)
 
 	if (inName) {
 		char szBuf[1024];
-		strcpy(szBuf, inName);
+		strcpy_s(szBuf, sizeof(szBuf), inName);
 		if (!is_final_name) {
 			char *ext = strchr(szBuf, '.');
 			if (ext) ext[0] = 0;

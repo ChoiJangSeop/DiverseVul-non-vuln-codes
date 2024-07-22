@@ -405,7 +405,7 @@ mp_sint32 LoaderS3M::load(XMFileBase& f, XModule* module)
 	
 	header->smpnum = s;
 	
-	strcpy(header->tracker,"Screamtracker 3");
+	strcpy_s(header->tracker, sizeof(header->tracker), "Screamtracker 3");
 	
 	module->setDefaultPanning();
 	

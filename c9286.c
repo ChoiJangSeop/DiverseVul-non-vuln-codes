@@ -144,7 +144,7 @@ netsnmp_init_mib(void)
     if (!Prefix)
         DEBUGMSGTL(("init_mib", "Prefix malloc failed"));
     else
-        strcpy(Prefix, prefix);
+        strcpy_s(Prefix, sizeof(Prefix), prefix);
 
     DEBUGMSGTL(("init_mib",
                 "Seen PREFIX: Looking in '%s' for prefix ...\n", Prefix));

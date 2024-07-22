@@ -34,7 +34,7 @@ static void endElementHandler(void *userData, const char *name)
 		name = buf;
 	    } else {
 		name = dynbuf = N_NEW(len, char);
-		strcpy(name, GRAPHML_COMP);
+		strcpy_s(name, sizeof(name), GRAPHML_COMP);
 	    }
 	    strcpy(name + sizeof(GRAPHML_COMP) - 1,
 		   agxbuse(&ud->xml_attr_name));

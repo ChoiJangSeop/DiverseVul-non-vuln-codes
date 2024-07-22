@@ -9,7 +9,7 @@ local void process(char *path)
 
     /* open input file with name in, descriptor ind -- set name and mtime */
     if (path == NULL) {
-        strcpy(g.inf, "<stdin>");
+        strcpy_s(g.inf, sizeof(g.inf), "<stdin>");
         g.ind = 0;
         g.name = NULL;
         g.mtime = g.headis & 2 ?
@@ -103,7 +103,7 @@ local void process(char *path)
                     item = bigger + (item - roll);
                     roll = bigger;
                 }
-                strcpy(item, next->d_name);
+                strcpy_s(item, sizeof(item), next->d_name);
                 item += len;
                 *item = 0;
             }
@@ -214,7 +214,7 @@ local void process(char *path)
         g.outf = MALLOC(strlen("<stdout>") + 1);
         if (g.outf == NULL)
             bail("not enough memory", "");
-        strcpy(g.outf, "<stdout>");
+        strcpy_s(g.outf, sizeof(g.outf), "<stdout>");
         g.outd = 1;
         if (!g.decode && !g.force && isatty(g.outd))
             bail("trying to write compressed data to a terminal",

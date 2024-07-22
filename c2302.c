@@ -169,7 +169,7 @@ static CURLcode parseurlandfillconn(struct SessionHandle *data,
   }
   else if(!path[0]) {
     /* if there's no path set, use a single slash */
-    strcpy(path, "/");
+    strcpy_s(path, sizeof(path), "/");
     rebuild_url = TRUE;
   }
 

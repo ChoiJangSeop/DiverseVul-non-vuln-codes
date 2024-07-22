@@ -21,7 +21,7 @@ static int writeState(const char *stateFilename)
         message_OOM();
         return 1;
     }
-    strcpy(tmpFilename, stateFilename);
+    strcpy_s(tmpFilename, sizeof(tmpFilename), stateFilename);
     strcat(tmpFilename, ".tmp");
     /* Remove possible tmp state file from previous run */
     error = unlink(tmpFilename);

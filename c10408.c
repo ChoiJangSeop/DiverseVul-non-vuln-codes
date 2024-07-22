@@ -31,7 +31,7 @@ int _XF86LoadQueryLocaleFont(
 	return 0;
     if (strlen(p + 1) + (size_t) l - 1 >= sizeof(buf) - 1)
 	return 0;
-    strcpy(buf, name);
+    strcpy_s(buf, sizeof(buf), name);
     strcpy(buf + l - 1, p + 1);
     fs = XLoadQueryFont(dpy, buf);
     if (!fs)

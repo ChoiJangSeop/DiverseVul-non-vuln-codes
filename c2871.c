@@ -117,7 +117,7 @@ Deploy(const char* packageName)
       return DEPLOY_ERROR;
    }
 
-   strcpy(cleanupCommand, CLEANUPCMD);
+   strcpy_s(cleanupCommand, sizeof(cleanupCommand), CLEANUPCMD);
    strcat(cleanupCommand, CLEANUPPATH);
 
    sLog(log_info, "Launching cleanup. \n");

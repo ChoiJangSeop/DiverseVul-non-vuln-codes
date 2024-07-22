@@ -164,7 +164,7 @@ int main(int argc, char *argv[])
 			control->outdir = malloc(strlen(optarg) + 2);
 			if (control->outdir == NULL)
 				fatal("Failed to allocate for outdir\n");
-			strcpy(control->outdir,optarg);
+			strcpy_s(control->outdir, sizeof(control->outdir), optarg);
 			if (strcmp(optarg+strlen(optarg) - 1, "/")) 	/* need a trailing slash */
 				strcat(control->outdir, "/");
 			break;

@@ -82,7 +82,7 @@ mptctl_hp_hostinfo(unsigned long arg, unsigned int data_size)
 	cfg.dir = 0;	/* read */
 	cfg.timeout = 10;
 
-	strncpy(karg.serial_number, " ", 24);
+	strcpy_s(karg.serial_number, 24, " ");
 	if (mpt_config(ioc, &cfg) == 0) {
 		if (cfg.cfghdr.hdr->PageLength > 0) {
 			/* Issue the second config page request */

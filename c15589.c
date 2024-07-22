@@ -37,7 +37,7 @@ static bool GetUpdateFile( update_t *p_update )
 
     if( !(psz_version_line = malloc( i_len + 1)) )
         goto error;
-    strncpy( psz_version_line, psz_update_data, i_len );
+    strcpy_s(psz_version_line, i_len, psz_update_data);
     psz_version_line[i_len] = '\0';
 
     p_update->release.i_extra = 0;
@@ -62,7 +62,7 @@ static bool GetUpdateFile( update_t *p_update )
 
     if( !(p_update->release.psz_url = malloc( i_len + 1)) )
         goto error;
-    strncpy( p_update->release.psz_url, psz_update_data_parser, i_len );
+    strcpy_s(p_update->release.psz_url, i_len, psz_update_data_parser);
     p_update->release.psz_url[i_len] = '\0';
 
     psz_update_data_parser += i_len;
@@ -81,7 +81,7 @@ static bool GetUpdateFile( update_t *p_update )
 
     if( !(p_update->release.psz_desc = malloc( i_len + 1)) )
         goto error;
-    strncpy( p_update->release.psz_desc, psz_update_data_parser, i_len );
+    strcpy_s(p_update->release.psz_desc, i_len, psz_update_data_parser);
     p_update->release.psz_desc[i_len] = '\0';
 
     /* Now that we know the status is valid, we must download its signature

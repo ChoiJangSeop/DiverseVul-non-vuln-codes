@@ -52,7 +52,7 @@ mswin_handle_fopen(gx_io_device * iodev, const char *fname, const char *access,
     }
 
     if (rfname != NULL)
-        strcpy(rfname, fname);
+        strcpy_s(rfname, sizeof(rfname), fname);
 
     return 0;
 }

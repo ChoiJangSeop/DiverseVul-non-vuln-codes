@@ -124,7 +124,7 @@ static int _expand_arg(pam_handle_t *pamh, char **value)
       return PAM_BUF_ERR;
     }
   }
-  strcpy(*value, tmp);
+  strcpy_s(*value, sizeof(*value), tmp);
   memset(tmp,'\0',sizeof(tmp));
   D(("Exit."));
 

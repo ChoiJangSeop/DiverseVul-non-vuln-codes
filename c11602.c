@@ -300,7 +300,7 @@ int main(int argc, char **argv)
             }
             else if (!outfilename) {
                 outfilename = malloc (strlen (argcp) + PATH_MAX);
-                strcpy (outfilename, argcp);
+                strcpy_s(outfilename, sizeof(outfilename), argcp);
                 use_stdout = (*argcp == '-');
             }
             else {
@@ -310,7 +310,7 @@ int main(int argc, char **argv)
 #else
             else if (output_spec) {
                 outfilename = malloc (strlen (argcp) + PATH_MAX);
-                strcpy (outfilename, argcp);
+                strcpy_s(outfilename, sizeof(outfilename), argcp);
                 use_stdout = (*argcp == '-');
                 output_spec = 0;
             }

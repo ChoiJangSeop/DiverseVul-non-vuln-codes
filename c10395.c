@@ -14,7 +14,7 @@ XSetCommand (
 	    /* copy arguments into single buffer */
 	    for (i = 0; i < argc; i++) {
 		if (argv[i]) {
-		    (void) strcpy(bp, argv[i]);
+		    (void) strcpy_s(bp, sizeof(bp), argv[i]);
 		    bp += strlen(argv[i]) + 1;
 		}
 		else

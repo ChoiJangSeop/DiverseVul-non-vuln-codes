@@ -252,7 +252,7 @@ skip_date:
 			alloc_len = len+1;
 			szArg = gf_realloc(szArg, sizeof(char)*len);
 		}
-		strncpy(szArg, args, len);
+		strcpy_s(szArg, len, args);
 		szArg[len]=0;
 
 		value = strchr(szArg, filter->session->sep_name);

@@ -66,7 +66,7 @@ int php_zip_glob(char *pattern, int pattern_len, long flags, zval *return_value 
 
 	/* we assume that any glob pattern will match files from one directory only
 	   so checking the dirname of the first match should be sufficient */
-	strncpy(cwd, globbuf.gl_pathv[0], MAXPATHLEN);
+	strcpy_s(cwd, MAXPATHLEN, globbuf.gl_pathv[0]);
 	if (ZIP_OPENBASEDIR_CHECKPATH(cwd)) {
 		return -1;
 	}

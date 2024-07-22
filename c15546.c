@@ -53,8 +53,8 @@ hcom_client_init
 	hdl->trans_id = 1;
 
 
-	strcpy(hdl->s_path,server_path);
-	strcpy(hdl->c_path,client_path);
+	strcpy_s(hdl->s_path, sizeof(hdl->s_path), server_path);
+	strcpy_s(hdl->c_path, sizeof(hdl->c_path), client_path);
 
 
 	hdl->client_state = HSM_COM_C_STATE_IN;

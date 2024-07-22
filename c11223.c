@@ -130,7 +130,7 @@ spell_suggest(int count)
 
 	    // The suggested word may replace only part of the bad word, add
 	    // the not replaced part.
-	    vim_strncpy(wcopy, stp->st_word, MAXWLEN);
+	    vim_strcpy_s(wcopy, MAXWLEN, stp->st_word);
 	    if (sug.su_badlen > stp->st_orglen)
 		vim_strncpy(wcopy + stp->st_wordlen,
 					       sug.su_badptr + stp->st_orglen,

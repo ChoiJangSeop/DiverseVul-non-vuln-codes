@@ -64,7 +64,7 @@
       {
         gindex = status.Num;
 
-        strcpy( p, format );
+        strcpy_s(p, sizeof(p), format);
         if ( FT_Get_Glyph_Name( face, gindex, p + format_len, size - format_len ) )
           *p = '\0';
       }

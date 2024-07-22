@@ -15,7 +15,7 @@ bool decompress_file(rzip_control *control)
 			  * because manipulations may be made to input filename, set local ptr
 			*/
 			infilecopy = alloca(strlen(control->infile) + strlen(control->suffix) + 1);
-			strcpy(infilecopy, control->infile);
+			strcpy_s(infilecopy, sizeof(infilecopy), control->infile);
 			strcat(infilecopy, control->suffix);
 		} else
 			infilecopy = strdupa(control->infile);
@@ -45,10 +45,10 @@ bool decompress_file(rzip_control *control)
 				fatal_return(("Failed to allocate outfile name\n"), false);
 
 			if (control->outdir) {	/* prepend control->outdir */
-				strcpy(control->outfile, control->outdir);
+				strcpy_s(control->outfile, sizeof(control->outfile), control->outdir);
 				strcat(control->outfile, tmpoutfile);
 			} else
-				strcpy(control->outfile, tmpoutfile);
+				strcpy_s(control->outfile, sizeof(control->outfile), tmpoutfile);
 		}
 
 		if (!STDOUT)

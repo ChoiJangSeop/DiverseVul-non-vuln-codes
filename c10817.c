@@ -102,7 +102,7 @@ int gethostbyaddr_r(const void *addr, socklen_t addrlen,
 			dst += sprintf(dst, "%x.%x.", tp[0] & 0xf, tp[0] >> 4);
 			tp--;
 		} while (tp >= (unsigned char *)addr);
-		strcpy(dst, "ip6.arpa");
+		strcpy_s(dst, sizeof(dst), "ip6.arpa");
 	}
 #endif
 
@@ -115,7 +115,7 @@ int gethostbyaddr_r(const void *addr, socklen_t addrlen,
 			return TRY_AGAIN;
 		}
 
-		strncpy(buf, a.dotted, buflen);
+		strcpy_s(buf, buflen, a.dotted);
 		free(a.dotted);
 		if (a.atype != T_CNAME)
 			break;

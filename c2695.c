@@ -89,7 +89,7 @@ int main(int argc, char **argv)
         // abrt-action-trim-files
         char path_env[] = "PATH=/usr/sbin:/sbin:/usr/bin:/bin:"BIN_DIR":"SBIN_DIR;
         if (u != 0)
-            strcpy(path_env, "PATH=/usr/bin:/bin:"BIN_DIR);
+            strcpy_s(path_env, sizeof(path_env), "PATH=/usr/bin:/bin:"BIN_DIR);
         putenv(path_env);
     }
 
